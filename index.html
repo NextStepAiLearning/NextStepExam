@@ -142,6 +142,13 @@ function brand(o){var n=String(o.org||'').trim()||'NextStep AI Learning',l=Strin
  $('ft').textContent='© '+new Date().getFullYear()+' '+n+'. All rights reserved.';$('lmono').innerHTML=mono(c,84,'#e9cf8a');
  $('lgo').innerHTML=mono(c,38,'#e9cf8a');
  if(l){var im=new Image();im.onload=function(){$('lgo').innerHTML='';$('lgo').appendChild(im)};im.src=l}}
+function mkqr(text){var q=$('qr'),t=document.createElement('div'),cv,im=new Image(),src='';q.innerHTML='';
+ t.style.cssText='position:absolute;left:-9999px;top:0';document.body.appendChild(t);
+ try{new QRCode(t,{text:text,width:252,height:252,correctLevel:QRCode.CorrectLevel.M});cv=t.querySelector('canvas');
+  src=cv&&cv.toDataURL?cv.toDataURL('image/png'):(t.querySelector('img')||{}).src||''}catch(e){}
+ document.body.removeChild(t);
+ if(!src){q.textContent='QR unavailable';return}
+ im.style.cssText='display:block;width:84px;height:84px';im.width=84;im.height=84;im.src=src;q.appendChild(im)}
 function fit(){var w=$('view').clientWidth,s=Math.min(1,w/1123);$('stage').style.transform='scale('+s+')';$('view').style.height=(794*s)+'px'}
 function rs(f,w,h,cover,type,cb){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var s=cover?Math.max(w/i.width,h/i.height):Math.min(w/i.width,h/i.height,1),dw=i.width*s,dh=i.height*s,W=cover?w:Math.round(dw),H=cover?h:Math.round(dh),c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');if(type=='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,W,H)}x.drawImage(i,(W-dw)/2,(H-dh)/2,dw,dh);cb(c.toDataURL(type,.8))};i.src=r.result};r.readAsDataURL(f)}
 function call(o){return fetch(API,{method:'POST',body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}})}
@@ -160,12 +167,11 @@ function chk(){var n=document.querySelectorAll('#qs input:checked').length;$('su
 $('sub').onclick=function(){var a=[];for(var i=0;i<N;i++)a.push(document.querySelector('input[name=q'+i+']:checked').value);this.disabled=true;
  call({op:'submit',phone:creds.phone,answers:a}).then(function(r){if(r.error)return msg('m2',r.error);showCert(r.cert,false)})};
 var RQ='Request sent. You can retake the exam once the admin allows it.';
-function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();var q=$('qr');q.innerHTML='';
- new QRCode(q,{text:location.href.split('#')[0]+'#/verify/'+c.certId,width:84,height:84,correctLevel:QRCode.CorrectLevel.M});
+function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(location.href.split('#')[0]+'#/verify/'+c.certId);
  if(document.fonts)document.fonts.ready.then(function(){render();fit()})}
 $('rq').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m3',r.error);$('rq').hidden=true;msg('m3',RQ,true)})};
 $('dl').onclick=async function(){var b=this,st=$('stage'),old=st.style.transform;b.disabled=true;b.textContent='Preparing…';
- try{await document.fonts.ready;st.style.transform='none';
+ try{await document.fonts.ready;var qi=$('qr').querySelector('img');if(qi&&qi.decode)await qi.decode().catch(function(){});st.style.transform='none';
   var c=await html2canvas($('cert'),{scale:3,useCORS:true,backgroundColor:null,width:1123,height:794,scrollX:0,scrollY:0});
   var pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:[297,210]});
   pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,297,210);pdf.save('Certificate-'+D.name.replace(/\s+/g,'_')+'.pdf')}
