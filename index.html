@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Exam &amp; Certificate</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&display=swap">
+<title>NextStep AI Learning – Assessment Portal</title>
+<meta name="theme-color" content="#14264f"><meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2314264f' stroke='%23b8923a' stroke-width='3'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='32' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -72,6 +74,29 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
 .pg{height:6px;background:#e7eaf3;border-radius:4px;margin:10px 0 18px;overflow:hidden}.pg i{display:block;height:100%;width:0;background:#b8923a;transition:width .25s}
 .qt{font-size:18px;line-height:1.6;font-weight:600;margin-bottom:6px}.ns{-webkit-user-select:none;user-select:none}
 .nv{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.nv button{flex:1;margin-top:0}.nv .s2{background:#eef1fa;color:#14264f}
+
+#ins .card,#qz .card{font-family:'Shonar Bangla','Hind Siliguri','Noto Sans Bengali','Plus Jakarta Sans',sans-serif}
+#qz .card{padding:22px 22px 20px;border-top:4px solid #b8923a;box-shadow:0 10px 30px rgba(20,38,79,.10)}
+.ql{font:600 10.5px 'Plus Jakarta Sans',sans-serif;letter-spacing:3px;color:#a67c1f}.qnum{font:700 26px/1.1 'Plus Jakarta Sans',sans-serif;color:#14264f;margin-top:2px}
+.tm{font:700 20px 'Plus Jakarta Sans',sans-serif;font-variant-numeric:tabular-nums;background:#14264f;color:#fff;padding:8px 16px;border-radius:12px;letter-spacing:1px}
+.tm.low{background:#c62828;color:#fff;animation:bl 1s infinite}@keyframes bl{50%{opacity:.65}}
+.pg{height:8px;border-radius:6px;margin:14px 0 12px}.pg i{background:linear-gradient(90deg,#b8923a,#e0c06a)}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.dots .dt{width:34px;height:34px;padding:0;margin:0;border-radius:50%;background:#fff;color:#667;border:1.5px solid #cfd5e6;font:600 13px 'Plus Jakarta Sans',sans-serif}
+.dots .dt.dn{background:#e9eefb;color:#14264f;border-color:#14264f}.dots .dt.cur{background:#14264f;color:#fff;border-color:#14264f;box-shadow:0 0 0 3px rgba(184,146,58,.45)}
+#qz .qt{font-size:22px;line-height:1.7;font-weight:600;color:#14264f;margin:4px 0 14px}
+#qz .op{position:relative;display:flex;align-items:center;gap:14px;padding:14px 16px;margin-top:10px;border:1.5px solid #d9deea;border-radius:12px;background:#fff;font-size:18px;line-height:1.55;transition:.15s}
+#qz .op:hover{border-color:#b8923a;background:#fffaf0}
+#qz .op input{position:absolute;opacity:0;pointer-events:none}
+#qz .ob{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef1fa;color:#14264f;font-weight:700;font-size:16px}
+#qz .op:has(input:checked){background:#f1f5ff;border-color:#14264f;box-shadow:0 0 0 1px #14264f inset}
+#qz .op:has(input:checked) .ob{background:#14264f;color:#fff}
+#qz .op:has(input:focus-visible){outline:2px solid #b8923a;outline-offset:2px}
+#qz .nv{margin-top:22px}#qz .nv button{padding:14px 18px;font-size:16px;border-radius:12px}
+#ins .rules{font-size:16px;line-height:1.8}
+.gr{position:fixed;inset:0;z-index:50;background:rgba(20,38,79,.96);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
+.gr small{display:block;font:600 12px 'Plus Jakarta Sans',sans-serif;letter-spacing:5px;color:#d9c48a}.gr b{display:block;font:700 120px/1.1 'Plus Jakarta Sans',sans-serif;color:#fff}.gr span{font-size:14px;color:#c9d0e6}
+@media(max-width:520px){#qz .qt{font-size:20px}#qz .op{font-size:17px;padding:12px}.dots .dt{width:30px;height:30px}}
 </style></head><body>
 <header class="sh"><div class="shi"><span id="lgo"></span><div><b id="bn">NextStep AI Learning</b><small>Online Assessment Portal</small></div></div></header>
 <div id="vExam" class="ex" hidden>
@@ -94,8 +119,9 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
  </div>
  <div id="ins" class="wrap" hidden><div class="card"><div class="lh">INSTRUCTIONS</div><h1>Welcome, <span id="who"></span></h1>
   <ul class="rules" id="rules"></ul><button id="st">Start Assessment</button><div id="m2" class="msg"></div></div></div>
- <div id="qz" class="wrap ns" hidden><div class="card"><div class="qh"><span id="qn"></span><span id="tm" class="tm" hidden></span></div>
-  <div class="pg"><i id="pb"></i></div><div id="qs"></div>
+ <div id="gr" class="gr" hidden><div><small>GET READY</small><b id="grn">3</b><span>Assessment is starting…</span></div></div>
+ <div id="qz" class="wrap ns" hidden><div class="card"><div class="qh"><div><div class="ql">QUESTION</div><div id="qn" class="qnum"></div></div><div id="tm" class="tm" hidden></div></div>
+  <div class="pg"><i id="pb"></i></div><div class="dots" id="dots"></div><div id="qs"></div>
   <div class="nv"><button class="s2" id="pv">Previous</button><button id="nx" disabled>Next</button></div><div id="m4" class="msg"></div></div></div>
 </div>
 <div id="vCancel" class="wrap" hidden><div class="card" id="cc" style="border-top:4px solid #c62828"><div class="lh" id="cl" style="color:#c62828">ASSESSMENT CANCELLED</div>
@@ -127,6 +153,7 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
  <div class="card"><b>Certificate settings</b><div class="g" id="sf"></div><button id="sv">Save settings</button></div></div></div>
 <footer class="sf2"><span id="ft">© NextStep AI Learning. All rights reserved.</span> · Certificates can be verified online using the QR code.</footer>
 <script>
+var SITE='https://nextstepailearning.github.io/NextStepExam/';
 var API='https://script.google.com/macros/s/AKfycbyZGvLqByBlYr9I629_FC08W9sp_JSXhERwIPLr1Ddc7kDVAmwfJnWXdxrgzLsXpuHO/exec';
 var $=function(i){return document.getElementById(i)};
 var D={},creds={},imgs={},nph='',pfT='';
@@ -188,17 +215,22 @@ $('ph').onkeydown=function(e){if(e.key=='Enter')$('go').click()};
 $('st').onclick=function(){var b=this;b.disabled=true;
  call({op:'start',phone:creds.phone}).then(function(r){b.disabled=false;
   if(r.error)return msg('m2',r.error);if(r.cancelled||r.failed)return showCancel(r);if(r.cert)return showCert(r.cert,r.requested);
-  EX={on:true,busy:false,qs:r.questions,i:0,ans:r.questions.map(function(){return ''}),end:r.remaining?Date.now()+r.remaining*1000:0};
-  sub('qz');$('tm').hidden=!EX.end;showQ();if(EX.end){tick();EX.t=setInterval(tick,500)}})};
+  EX={on:true,busy:false,qs:r.questions,i:0,ans:r.questions.map(function(){return ''}),end:0};
+  sub('qz');$('tm').hidden=!r.remaining;showQ();var n=3;$('grn').textContent=n;$('gr').hidden=false;
+  var cd=setInterval(function(){n--;if(n>0)return($('grn').textContent=n);clearInterval(cd);$('gr').hidden=true;
+   if(r.remaining){EX.end=Date.now()+r.remaining*1000;tick();EX.t=setInterval(tick,500)}},1000)})};
 function tick(){if(!EX.on)return;var l=Math.max(0,Math.round((EX.end-Date.now())/1000)),m=Math.floor(l/60),s=l%60;
  $('tm').textContent='⏱ '+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;$('tm').className='tm'+(l<=60?' low':'');if(l<=0)finish()}
+var BL={A:'ক',B:'খ',C:'গ',D:'ঘ'};
+$('dots').onclick=function(e){var k=e.target.dataset.k;if(k!=null&&EX.on&&!EX.busy){EX.i=+k;showQ()}};
 function showQ(){var q=EX.qs[EX.i],n=EX.qs.length,last=EX.i==n-1;
- $('qn').textContent='Question '+(EX.i+1)+' of '+n;$('pb').style.width=((EX.i+1)/n*100)+'%';
- $('qs').innerHTML='<div class="qt">'+esc(q.q)+'</div>'+['A','B','C','D'].filter(function(k){return q.o[k]}).map(function(k){return '<label class="op"><input type="radio" name="q" value="'+k+'"'+(EX.ans[EX.i]==k?' checked':'')+'> '+esc(q.o[k])+'</label>'}).join('');
+ $('qn').textContent=(EX.i+1)+' / '+n;
+ $('dots').innerHTML=EX.qs.map(function(_,k){return '<button type="button" class="dt'+(k==EX.i?' cur':'')+(EX.ans[k]?' dn':'')+'" data-k="'+k+'">'+(k+1)+'</button>'}).join('');$('pb').style.width=((EX.i+1)/n*100)+'%';
+ $('qs').innerHTML='<div class="qt">'+esc(q.q)+'</div>'+['A','B','C','D'].filter(function(k){return q.o[k]}).map(function(k){return '<label class="op"><input type="radio" name="q" value="'+k+'"'+(EX.ans[EX.i]==k?' checked':'')+'><span class="ob">'+BL[k]+'</span><span>'+esc(q.o[k])+'</span></label>'}).join('');
  $('pv').disabled=EX.i==0;$('nx').textContent=last?'Submit Assessment':'Next';$('nx').disabled=!EX.ans[EX.i];msg('m4','')}
-$('qs').onchange=function(e){if(e.target.name=='q'){EX.ans[EX.i]=e.target.value;$('nx').disabled=false}};
+$('qs').onchange=function(e){if(e.target.name=='q'){EX.ans[EX.i]=e.target.value;showQ()}};
 $('pv').onclick=function(){if(EX.i>0){EX.i--;showQ()}};
-$('nx').onclick=function(){if(EX.i<EX.qs.length-1){EX.i++;showQ()}else if(confirm('Submit your answers now? You cannot change them afterwards.'))finish()};
+$('nx').onclick=function(){if(EX.i<EX.qs.length-1){EX.i++;showQ()}else if(confirm((EX.ans.filter(function(a){return !a}).length?EX.ans.filter(function(a){return !a}).length+' question(s) unanswered. ':'')+'Submit your answers now? You cannot change them afterwards.'))finish()};
 function finish(){if(!EX.on||EX.busy)return;EX.busy=true;clearInterval(EX.t);$('nx').disabled=$('pv').disabled=true;msg('m4','Submitting…',true);
  call({op:'submit',phone:creds.phone,answers:EX.ans}).then(function(r){EX.on=false;
   if(r.error){EX.busy=false;$('nx').disabled=false;return msg('m4',r.error)}
@@ -215,7 +247,7 @@ function showCancel(r){LC=r;show('vCancel');$('vc').hidden=!r.cert;$('rq2').hidd
 $('vc').onclick=function(){if(LC&&LC.cert)showCert(LC.cert,LC.requested)};
 $('rq2').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m5',r.error);$('rq2').hidden=true;msg('m5',RQ,true)})};
 var RQ='Request sent. You can retake the exam once the admin allows it.';
-function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(location.href.split('#')[0]+'#/verify/'+c.certId);
+function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(SITE+'#/verify/'+c.certId);
  if(document.fonts)document.fonts.ready.then(function(){render();fit()})}
 $('rq').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m3',r.error);$('rq').hidden=true;msg('m3',RQ,true)})};
 $('dl').onclick=async function(){var b=this,st=$('stage'),old=st.style.transform;b.disabled=true;b.textContent='Preparing…';
@@ -234,13 +266,15 @@ function doVerify(id){var b=$('vb');b.className='vbox';b.textContent='Verifying�
   if(r.error){b.className='vbox bad';b.innerHTML='❌ '+esc(r.error)+'<br><small>ID: '+esc(id)+'</small>';return}
   var c=r.cert;b.className='vbox good';
   b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>Training</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
-var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['minutes','Exam time limit in minutes (optional, empty = no limit)'],['pass_percent','Pass mark in % (certificate only if score is at least this, default 50)'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
+var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['minutes','Exam time limit (select)'],['pass_percent','Pass mark in % (certificate only if score is at least this, default 50)'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
+var MN=['5','10','15','20','25','30','45','60','90'];
 var IM=[['logo','Logo (optional)',220,90],['sig_trainer','Trainer signature (PNG). Also used when Trainer and Director are the same person',320,120],['sig_director','Director signature (PNG)',320,120]];
 $('sf').innerHTML=CF.map(function(c){return '<div><label class="f">'+c[1]+'</label>'+(c[2]?'<select id="c_'+c[0]+'"><option value="">Not shown</option><option>Online</option><option>In-Person</option></select>':'<input type="text" id="c_'+c[0]+'">')+'</div>'}).join('')+'<div><label class="f"><input type="checkbox" id="c_combined"> Trainer and Director are the same person (one signature)</label></div>'+IM.map(function(m){return '<div><label class="f">'+m[1]+' <span id="s_'+m[0]+'"></span></label><input type="file" accept="image/*" data-k="'+m[0]+'"></div>'}).join('');
+(function(){var o=$('c_minutes'),e=document.createElement('select');e.id='c_minutes';e.innerHTML='<option value="">No time limit</option>'+MN.map(function(x){return '<option value="'+x+'">'+x+' minutes</option>'}).join('');o.parentNode.replaceChild(e,o)})();
 $('sf').onchange=function(e){var t=e.target,m;if(t.type=='file'&&t.files[0]){m=IM.filter(function(x){return x[0]==t.dataset.k})[0];rs(t.files[0],m[2],m[3],false,'image/png',function(u){imgs[m[0]]=u;$('s_'+m[0]).textContent='✓ ready to save'})}};
 function adm(op,x){var o=x||{};o.op=op;o.pw=$('apw').value;return call(o).then(function(r){
  if(r.error){msg('am',r.error);return r}msg('am','');$('ad').hidden=false;
- CF.forEach(function(c){$('c_'+c[0]).value=r.cfg[c[0]]||''});$('c_combined').checked=r.cfg.combined=='YES';IM.forEach(function(m){$('s_'+m[0]).textContent=r.cfg['has_'+m[0]]?'(uploaded)':''});
+ CF.forEach(function(c){var el=$('c_'+c[0]);if(c[0]=='minutes'&&r.cfg.minutes&&MN.indexOf(r.cfg.minutes)<0)el.add(new Option(r.cfg.minutes+' minutes',r.cfg.minutes));el.value=r.cfg[c[0]]||''});$('c_combined').checked=r.cfg.combined=='YES';IM.forEach(function(m){$('s_'+m[0]).textContent=r.cfg['has_'+m[0]]?'(uploaded)':''});
  $('pt').innerHTML='<tr><th>Phone</th><th>Name</th><th>Photo</th><th>Allowed</th><th>Taken</th><th>Request</th><th></th></tr>'+r.people.map(function(p){return '<tr><td>'+esc(p.phone)+'</td><td>'+esc(p.name)+'</td><td>'+(p.photo?'✓':'–')+'</td><td>'+p.allowed+'</td><td>'+p.used+'</td><td>'+(p.request=='YES'?'🔔 Requested':'')+'</td><td><button class="s" data-op="retake" data-ph="'+p.phone+'">✔ Allow again</button><button class="s" data-op="photo" data-ph="'+p.phone+'">📷 Photo</button><button class="s" data-op="remove" data-ph="'+p.phone+'">Remove</button></td></tr>'}).join('');
  $('rt').innerHTML='<tr><th>Name</th><th>Phone</th><th>Score</th><th>Certificate ID</th><th>Date</th><th>Status</th></tr>'+r.results.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+esc(p.phone)+'</td><td>'+esc(p.score)+'</td><td>'+esc(p.id)+'</td><td>'+esc(p.date)+'</td><td>'+(p.status=='CANCELLED'?'❌ Cancelled':p.status=='FAILED'?'✖ Not passed':'✓')+'</td></tr>'}).join('');return r})}
 $('pt').onclick=function(e){var t=e.target,o=t.dataset.op;if(!o)return;if(o=='photo'){pfT=t.dataset.ph;$('pf').click()}else if(o!='remove'||confirm('Remove this person?'))adm(o,{phone:t.dataset.ph})};
