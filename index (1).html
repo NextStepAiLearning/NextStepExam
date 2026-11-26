@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exam &amp; Certificate</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:#f3f5fa;color:#14264f;font-family:'Plus Jakarta Sans',system-ui,sans-serif;display:flex;flex-direction:column;min-height:100vh;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:16px}.wide{max-width:1180px}
+.sh{background:#14264f;border-bottom:3px solid #b8923a}.shi{max-width:1180px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px;color:#fff}
+.shi b{display:block;font:600 17px Cinzel,serif;letter-spacing:2px}.shi small{display:block;font-size:10.5px;letter-spacing:2px;color:#d9c48a;text-transform:uppercase;margin-top:2px}
+#lgo{display:flex}#lgo img{height:38px;background:#fff;padding:3px;border-radius:6px}
+.ex{flex:1;display:flex;flex-direction:column}.sf2{margin-top:auto;border-top:1px solid #d9deea;background:#fff;text-align:center;font-size:12px;color:#667;padding:14px 16px}
+.lw{flex:1;display:grid;grid-template-columns:1.05fr 1fr;width:100%}
+.lp{position:relative;background:#14264f;color:#fff;display:flex;align-items:center;justify-content:center;padding:48px 40px;overflow:hidden;background-image:repeating-radial-gradient(circle at 20% 30%,rgba(184,146,58,.10) 0 1px,transparent 1px 22px)}
+.lp:after{content:"";position:absolute;inset:18px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.lpi{position:relative;max-width:440px;z-index:1}.lk{font:600 11px Cinzel,serif;letter-spacing:4px;color:#d9c48a;margin-top:18px}
+.lp h2{font:600 34px/1.2 Cinzel,serif;letter-spacing:2px;margin:10px 0 0}.lt{font:italic 500 19px 'Cormorant Garamond',serif;color:#e9d9a8;margin:8px 0 0}
+.lp hr{border:0;height:1px;background:linear-gradient(90deg,#b8923a,transparent);margin:24px 0}
+.lf{list-style:none;margin:0;padding:0}.lf li{padding-left:18px;position:relative;margin-bottom:16px}.lf li:before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;background:#b8923a;transform:rotate(45deg)}
+.lf b{display:block;font-size:14px;font-weight:700}.lf span{display:block;font-size:13px;line-height:1.5;color:#c9d0e6;margin-top:2px}
+.lc{display:flex;align-items:center;justify-content:center;padding:40px 24px;background:#fbf8f0}
+.lcard{width:100%;max-width:420px;background:#fff;border:1px solid #e3dcc6;border-top:4px solid #14264f;box-shadow:0 10px 30px rgba(20,38,79,.08);padding:30px 28px 24px}
+.lh{font:600 11px Cinzel,serif;letter-spacing:3px;color:#a67c1f}.lcard h1{font:700 24px/1.25 'Playfair Display',serif;margin:8px 0 6px}
+.sub{font-size:13.5px;line-height:1.55;color:#5b6180;margin:0 0 6px}
+.lcard input[type=text]{border-radius:4px;border:1px solid #b9c0d6;padding:13px;font-size:16px;letter-spacing:1px}.lcard input[type=text]:focus{outline:2px solid #b8923a;outline-offset:1px;border-color:#14264f}
+#go{width:100%;border-radius:4px;border-bottom:3px solid #b8923a;padding:14px;letter-spacing:1px;margin-top:16px}
+.nt{margin-top:18px;padding-top:14px;border-top:1px solid #eee7d2;font-size:12px;line-height:1.55;color:#667}
+@media(max-width:820px){.lw{grid-template-columns:1fr}.lp{padding:30px 22px}.lp h2{font-size:26px}.lf{display:none}.lp hr{display:none}.lc{padding:24px 14px}}
+.card{background:#fff;border:1px solid #d9deea;border-radius:14px;padding:18px;margin-bottom:14px}
+h1{font-size:21px;margin:6px 0 12px}label.f{display:block;font-size:13px;font-weight:600;color:#667;margin:10px 0 4px}
+input[type=text],select{width:100%;padding:11px;border:1px solid #cfd5e6;border-radius:8px;font:inherit;font-size:15px;background:#fff}
+button{border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:700;background:#14264f;color:#fff;cursor:pointer;margin-top:12px}
+button.s{background:#eef1fa;color:#14264f;padding:6px 10px;margin:0 2px 2px 0;font-size:12px}button:disabled{opacity:.5}
+.msg{margin-top:10px;font-size:14px}.er{color:#c62828}.ok{color:#2e7d32}
+.q{margin:14px 0;padding-bottom:10px;border-bottom:1px solid #eef0f6}.op{display:block;padding:8px 10px;margin-top:6px;border:1px solid #d9deea;border-radius:8px;cursor:pointer}
+.op:has(input:checked){background:#eef2ff;border-color:#14264f}
+.vbox{border-radius:14px;padding:20px;background:#fff;border:2px solid #d9deea;overflow:hidden}.good{border-color:#2e7d32;background:#f1faf2}.bad{border-color:#c62828;background:#fdf1f1}
+.big{font-size:21px;font-weight:700;color:#2e7d32;margin-bottom:10px}.vbox td{padding:5px 14px 5px 0}.vbox td:first-child{color:#667}
+table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow-x:auto}.t td,.t th{padding:6px 8px;border-bottom:1px solid #eef0f6;text-align:left;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+#view{overflow:hidden;border-radius:10px;border:1px solid #d9deea;background:#cfd5e6}#stage{transform-origin:0 0;width:1123px;height:794px}
+#cert{position:relative;width:1123px;height:794px;background:#fbf8f0;overflow:hidden;color:#14264f;font-family:'Cormorant Garamond',serif}
+#cert .fr{position:absolute;border:0 solid #14264f}.f1{left:16px;top:16px;right:16px;bottom:16px;border-width:4px!important}
+.f2{left:26px;top:26px;right:26px;bottom:26px;border-width:1.5px!important;border-color:#b8923a!important}.f3{left:31px;top:31px;right:31px;bottom:31px;border-width:.5px!important}
+.cn{position:absolute;width:48px;height:48px;border:3px solid #b8923a}
+.mt{position:absolute;left:34px;right:34px;font:600 5px 'Plus Jakarta Sans',sans-serif;letter-spacing:1.6px;white-space:nowrap;overflow:hidden;opacity:.55}
+.ph{position:absolute;left:68px;top:58px;width:94px;height:118px;border:3px solid #b8923a;padding:3px;background:#fff}.ph img{width:100%;height:100%;display:block}
+.cno{position:absolute;right:68px;top:62px;text-align:right}.cno small{display:block;font:600 9px Cinzel,serif;letter-spacing:3px;color:#a67c1f}.cno b{font:700 18px Cinzel,serif;letter-spacing:2px}
+.col{position:absolute;left:60px;right:60px;top:42px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.on{font:600 24px Cinzel,serif;letter-spacing:6px;margin-top:6px}.tg{font:italic 500 16px 'Cormorant Garamond',serif;color:#8d6a1c;margin-top:2px}
+.t1{font:700 54px 'Playfair Display',serif;letter-spacing:10px;padding-left:10px;line-height:1;margin-top:12px}
+.t2{font:600 16px Cinzel,serif;letter-spacing:8px;padding-left:8px;color:#a67c1f;margin-top:10px}
+.dv{width:340px;display:flex;align-items:center;gap:10px;color:#b8923a;margin-top:8px}.dv u{flex:1;height:1px;background:#b8923a}
+.ct{font:italic 500 22px 'Cormorant Garamond',serif;margin-top:10px;color:#444b66}
+.nm{font:italic 600 56px/1.1 'Cormorant Garamond',serif;min-width:560px;max-width:900px;padding:0 30px 4px;border-bottom:1.5px solid #b8923a;margin-top:2px}
+.ds{font:500 21px/1.5 'Cormorant Garamond',serif;width:800px;margin-top:14px;color:#2a3150}.ds b{font-weight:700}
+.mr{display:flex;justify-content:center;margin-top:16px}.mi{padding:0 40px;text-align:center}.mi+.mi{border-left:1px solid #d9c9a0}
+.mi b{display:block;font:600 22px 'Cormorant Garamond',serif}.mi small{font:600 9px Cinzel,serif;letter-spacing:3px;color:#a67c1f}
+.bt{position:absolute;left:88px;right:88px;bottom:62px;display:flex;justify-content:space-between;align-items:flex-end}
+.bl{width:390px}.br{width:390px;display:flex;justify-content:flex-end;gap:26px}
+.qb{display:inline-block;text-align:center;background:#fff;padding:6px;border:1px solid #d9c9a0}.qb #qr{width:84px;height:84px}.qb small{display:block;font:600 7.5px Cinzel,serif;letter-spacing:1.5px;margin-top:3px}
+.sg{text-align:center}.sg .im{height:62px;display:flex;align-items:flex-end;justify-content:center}.sg img{max-height:60px;max-width:170px}
+.sg .sc{font:70px/.8 'Mrs Saint Delafield',cursive}.sg .ln{border-top:1.5px solid #14264f;padding-top:6px;font:700 14px 'Plus Jakarta Sans',sans-serif}.sg .rl{font:500 12px 'Plus Jakarta Sans',sans-serif;color:#5b6180;margin-top:2px}
+</style></head><body>
+<header class="sh"><div class="shi"><span id="lgo"></span><div><b id="bn">NextStep AI Learning</b><small>Online Assessment Portal</small></div></div></header>
+<div id="vExam" class="ex" hidden>
+ <div id="lg" class="lw">
+  <section class="lp"><div class="lpi">
+   <div id="lmono"></div><div class="lk">ONLINE ASSESSMENT PORTAL</div>
+   <h2 id="lorg">NextStep AI Learning</h2><p class="lt" id="ltag" hidden></p><hr>
+   <ul class="lf">
+    <li><b>Secure access</b><span>Only participants registered by the training coordinator can sit the assessment.</span></li>
+    <li><b>Instant result</b><span>Your score is shown as soon as you submit your answers.</span></li>
+    <li><b>Verifiable certificate</b><span>Every certificate carries a unique number and a QR code so anyone can confirm it is genuine.</span></li>
+   </ul></div></section>
+  <section class="lc"><div class="lcard">
+   <div class="lh">PARTICIPANT LOGIN</div><h1>Sign in to your assessment</h1>
+   <p class="sub">Enter the mobile number registered with your training coordinator.</p>
+   <label class="f" for="ph">Registered mobile number</label><input type="text" id="ph" inputmode="numeric" autocomplete="tel" placeholder="01XXXXXXXXX">
+   <button id="go">Continue to Assessment</button><div id="m1" class="msg"></div>
+   <div class="nt"><b>Need help?</b> If your number is not recognised, please contact your training coordinator. Each participant may take the assessment once unless a retake is approved.</div>
+  </div></section>
+ </div>
+ <div id="qz" class="wrap" hidden><div class="card"><h1>Welcome, <span id="who"></span></h1><div id="qs"></div>
+  <button id="sub" disabled>Submit (<span id="cnt"></span>)</button><div id="m2" class="msg"></div></div></div>
+</div>
+<div id="vCert" class="wrap wide" hidden><div class="card"><b>🎉 Your score: <span id="sc"></span></b><br>
+ <button id="dl">⬇ Download Certificate (PDF)</button> <button id="rq" class="s" style="padding:12px 16px;margin-top:12px">🔁 Request another attempt</button><div id="m3" class="msg"></div></div>
+ <div id="view"><div id="stage">
+<div id="cert">
+ <svg id="gl" style="position:absolute;left:0;top:0;opacity:.12" width="1123" height="794" fill="none" stroke="#b8923a" stroke-width=".7"></svg>
+ <div class="fr f1"></div><div class="fr f2"></div><div class="fr f3"></div>
+ <div class="cn" style="top:40px;left:40px;border-right:0;border-bottom:0"></div><div class="cn" style="top:40px;right:40px;border-left:0;border-bottom:0"></div>
+ <div class="cn" style="bottom:40px;left:40px;border-right:0;border-top:0"></div><div class="cn" style="bottom:40px;right:40px;border-left:0;border-top:0"></div>
+ <div class="mt" id="mt1" style="top:21px"></div><div class="mt" id="mt2" style="bottom:21px"></div>
+ <div class="ph" id="pho" hidden></div>
+ <div class="cno"><small>CERTIFICATE NO.</small><b id="cno"></b></div>
+ <div class="col"><div id="hd"></div><div class="t1">CERTIFICATE</div><div class="t2">OF ACHIEVEMENT</div><div class="dv"><u></u>✦<u></u></div>
+  <div class="ct">This is to certify that</div><div class="nm" id="o_name"></div><div class="ds" id="o_ds"></div><div class="mr" id="mr"></div></div>
+ <div class="bt"><div class="bl"><div class="qb"><div id="qr"></div><small>SCAN TO VERIFY</small></div></div><svg id="seal" width="118" height="118" viewBox="0 0 120 120"></svg><div class="br" id="sigs"></div></div>
+</div>
+ </div></div></div>
+<div id="vVerify" class="wrap"><h1>Certificate Verification</h1><div id="vb" class="vbox"></div></div>
+<div id="vAdmin" class="wrap wide" hidden><div class="card"><h1>⚙ Admin Panel</h1>
+ <input type="text" id="apw" placeholder="Admin password" style="-webkit-text-security:disc"><button id="al">Load</button><div id="am" class="msg"></div></div>
+ <div id="ad" hidden><div class="card"><b>Add a participant</b><div class="g"><input type="text" id="np" placeholder="Mobile number"><input type="text" id="nn" placeholder="Name (as printed on certificate)"><input type="file" id="npf" accept="image/*"></div><button id="ad1">Add</button></div>
+ <div class="card"><b>Allowed list</b><table class="t" id="pt"></table><input type="file" id="pf" accept="image/*" hidden></div>
+ <div class="card"><b>Recent results</b><table class="t" id="rt"></table></div>
+ <div class="card"><b>Certificate settings</b><div class="g" id="sf"></div><button id="sv">Save settings</button></div></div></div>
+<footer class="sf2"><span id="ft">© NextStep AI Learning. All rights reserved.</span> · Certificates can be verified online using the QR code.</footer>
+<script>
+var API='https://script.google.com/macros/s/AKfycbyZGvLqByBlYr9I629_FC08W9sp_JSXhERwIPLr1Ddc7kDVAmwfJnWXdxrgzLsXpuHO/exec';
+var $=function(i){return document.getElementById(i)};
+var D={},N=0,creds={},imgs={},nph='',pfT='';
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+function render(){
+ var v=function(k){return String(D[k]==null?'':D[k]).trim()},g='',i;
+ for(i=0;i<18;i++)g+='<ellipse cx="561" cy="397" rx="340" ry="110" transform="rotate('+i*10+' 561 397)"/>';
+ for(i=60;i<=420;i+=30)g+='<circle cx="561" cy="397" r="'+i+'"/>';
+ $('gl').innerHTML=g;$('mt1').textContent=$('mt2').textContent='AUTHENTIC • ORIGINAL • VERIFIABLE • '.repeat(45);
+ $('hd').innerHTML=(v('logo')?'<img src="'+D.logo+'" style="height:54px">':'<svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="#b8923a" stroke-width="2"/><text x="26" y="35" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="25" fill="#14264f">'+esc((v('org')[0]||'C').toUpperCase())+'</text></svg>')+'<div class="on">'+esc(v('org').toUpperCase())+'</div>'+(v('tagline')?'<div class="tg">'+esc(v('tagline'))+'</div>':'');
+ $('pho').hidden=!v('photo');$('pho').innerHTML=v('photo')?'<img src="'+D.photo+'">':'';
+ var id=v('certId');$('cno').textContent=id.slice(0,4)+'-'+id.slice(4);
+ $('o_name').textContent=v('name');
+ var m=v('mode'),h=parseFloat(v('hours')),ve=v('venue');
+ $('o_ds').innerHTML='has successfully completed the '+(h?h+'-hour ':'')+'training programme <b>“'+esc(v('title'))+'”</b>'+(m?', delivered '+(m=='Online'?'online':'in person'):'')+(ve?' at '+esc(ve):'')+', and passed the assessment with a score of <b>'+esc(v('score'))+'</b>.';
+ $('mr').innerHTML=[['Issue Date',v('date')],['Duration',h?h+' Hours':''],['Mode',m],['Batch No.',v('batch')]].filter(function(x){return x[1]}).map(function(x){return '<div class="mi"><b>'+esc(x[1])+'</b><small>'+x[0].toUpperCase()+'</small></div>'}).join('');
+ var sig=function(n,r,im,w){return '<div class="sg" style="width:'+w+'px"><div class="im">'+(im?'<img src="'+im+'">':'<div class="sc">'+esc(n)+'</div>')+'</div><div class="ln">'+esc(n)+'</div><div class="rl">'+esc(r)+'</div></div>'},s='';
+ if(v('combined')=='YES'&&v('trainer'))s=sig(v('trainer'),v('trainer_role')||'Trainer & Director',v('sig_trainer'),240);
+ else{if(v('trainer'))s+=sig(v('trainer'),v('trainer_role')||'Trainer',v('sig_trainer'),190);if(v('director'))s+=sig(v('director'),v('director_role')||'Director',v('sig_director'),190)}
+ $('sigs').innerHTML=s;
+ var p='';for(i=0;i<48;i++){var a=i*Math.PI/24,r=i%2?56:51;p+=(i?'L':'M')+(60+r*Math.cos(a)).toFixed(1)+' '+(60+r*Math.sin(a)).toFixed(1)}
+ $('seal').innerHTML='<defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9cf8a"/><stop offset=".5" stop-color="#b8923a"/><stop offset="1" stop-color="#8d6a1c"/></linearGradient><path id="sp" d="M60 60 m-33 0 a33 33 0 1 1 66 0 a33 33 0 1 1 -66 0"/></defs><path d="'+p+'Z" fill="url(#gd)"/><circle cx="60" cy="60" r="45" fill="none" stroke="#fff6dc" stroke-width="1.2"/><circle cx="60" cy="60" r="25" fill="#14264f" stroke="#fff6dc" stroke-width="1.2"/><path d="M60 46 L63.5 56.5 L74 60 L63.5 63.5 L60 74 L56.5 63.5 L46 60 L56.5 56.5Z" fill="#e9cf8a"/><text font-family="Arial,sans-serif" font-weight="700" font-size="7.5" fill="#fff6dc" letter-spacing="1.8"><textPath href="#sp" startOffset="50%" text-anchor="middle">OFFICIAL SEAL • VERIFIED</textPath></text>';
+}
+function mono(ch,sz,col){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="#b8923a" stroke-width="2"/><circle cx="26" cy="26" r="20" fill="none" stroke="#b8923a" stroke-width=".6"/><text x="26" y="35" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="25" fill="'+col+'">'+esc(ch)+'</text></svg>'}
+function brand(o){var n=String(o.org||'').trim()||'NextStep AI Learning',l=String(o.logo||'').trim(),t=String(o.tagline||'').trim(),c=n[0].toUpperCase();
+ $('bn').textContent=$('lorg').textContent=n;$('ltag').textContent=t;$('ltag').hidden=!t;document.title=n+' – Assessment Portal';
+ $('ft').textContent='© '+new Date().getFullYear()+' '+n+'. All rights reserved.';$('lmono').innerHTML=mono(c,84,'#e9cf8a');
+ $('lgo').innerHTML=mono(c,38,'#e9cf8a');
+ if(l){var im=new Image();im.onload=function(){$('lgo').innerHTML='';$('lgo').appendChild(im)};im.src=l}}
+function fit(){var w=$('view').clientWidth,s=Math.min(1,w/1123);$('stage').style.transform='scale('+s+')';$('view').style.height=(794*s)+'px'}
+function rs(f,w,h,cover,type,cb){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var s=cover?Math.max(w/i.width,h/i.height):Math.min(w/i.width,h/i.height,1),dw=i.width*s,dh=i.height*s,W=cover?w:Math.round(dw),H=cover?h:Math.round(dh),c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');if(type=='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,W,H)}x.drawImage(i,(W-dw)/2,(H-dh)/2,dw,dh);cb(c.toDataURL(type,.8))};i.src=r.result};r.readAsDataURL(f)}
+function call(o){return fetch(API,{method:'POST',body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}})}
+function show(id){['vExam','vCert','vVerify','vAdmin'].forEach(function(x){$(x).hidden=x!=id})}
+function msg(id,t,ok){$(id).textContent=t||'';$(id).className='msg '+(ok?'ok':'er')}
+function route(){var h=location.hash;if(h.indexOf('#/verify/')==0){show('vVerify');doVerify(decodeURIComponent(h.slice(9)))}else if(h=='#/admin')show('vAdmin');else show('vExam')}
+window.onhashchange=route;window.onresize=fit;
+brand({});call({op:'brand'}).then(function(r){if(r&&!r.error)brand(r)});
+$('ph').onkeydown=function(e){if(e.key=='Enter')$('go').click()};
+$('go').onclick=function(){var b=this;b.disabled=true;creds={phone:$('ph').value};
+ call({op:'login',phone:creds.phone}).then(function(r){b.disabled=false;
+  if(r.error)return msg('m1',r.error);if(r.cert)return showCert(r.cert,r.requested);
+  $('lg').hidden=true;$('qz').hidden=false;$('who').textContent=r.name;buildQ(r.questions)})};
+function buildQ(qs){N=qs.length;$('qs').innerHTML=qs.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+esc(q.q)+'</b>'+['A','B','C','D'].filter(function(k){return q.o[k]}).map(function(k){return '<label class="op"><input type="radio" name="q'+i+'" value="'+k+'"> '+esc(q.o[k])+'</label>'}).join('')+'</div>'}).join('');$('qs').onchange=chk;chk()}
+function chk(){var n=document.querySelectorAll('#qs input:checked').length;$('sub').disabled=n<N;$('cnt').textContent=n+'/'+N}
+$('sub').onclick=function(){var a=[];for(var i=0;i<N;i++)a.push(document.querySelector('input[name=q'+i+']:checked').value);this.disabled=true;
+ call({op:'submit',phone:creds.phone,answers:a}).then(function(r){if(r.error)return msg('m2',r.error);showCert(r.cert,false)})};
+var RQ='Request sent. You can retake the exam once the admin allows it.';
+function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();var q=$('qr');q.innerHTML='';
+ new QRCode(q,{text:location.href.split('#')[0]+'#/verify/'+c.certId,width:84,height:84,correctLevel:QRCode.CorrectLevel.M});
+ if(document.fonts)document.fonts.ready.then(function(){render();fit()})}
+$('rq').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m3',r.error);$('rq').hidden=true;msg('m3',RQ,true)})};
+$('dl').onclick=async function(){var b=this,st=$('stage'),old=st.style.transform;b.disabled=true;b.textContent='Preparing…';
+ try{await document.fonts.ready;st.style.transform='none';
+  var c=await html2canvas($('cert'),{scale:3,useCORS:true,backgroundColor:null,width:1123,height:794,scrollX:0,scrollY:0});
+  var pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:[297,210]});
+  pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,297,210);pdf.save('Certificate-'+D.name.replace(/\s+/g,'_')+'.pdf')}
+ catch(e){alert('Could not create PDF: '+e.message)}
+ st.style.transform=old;b.disabled=false;b.textContent='⬇ Download Certificate (PDF)'};
+function doVerify(id){var b=$('vb');b.className='vbox';b.textContent='Verifying…';
+ call({op:'verify',id:id}).then(function(r){
+  if(r.error){b.className='vbox bad';b.innerHTML='❌ '+esc(r.error)+'<br><small>ID: '+esc(id)+'</small>';return}
+  var c=r.cert;b.className='vbox good';
+  b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>Training</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
+var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
+var IM=[['logo','Logo (optional)',220,90],['sig_trainer','Trainer signature (PNG). Also used when Trainer and Director are the same person',320,120],['sig_director','Director signature (PNG)',320,120]];
+$('sf').innerHTML=CF.map(function(c){return '<div><label class="f">'+c[1]+'</label>'+(c[2]?'<select id="c_'+c[0]+'"><option value="">Not shown</option><option>Online</option><option>In-Person</option></select>':'<input type="text" id="c_'+c[0]+'">')+'</div>'}).join('')+'<div><label class="f"><input type="checkbox" id="c_combined"> Trainer and Director are the same person (one signature)</label></div>'+IM.map(function(m){return '<div><label class="f">'+m[1]+' <span id="s_'+m[0]+'"></span></label><input type="file" accept="image/*" data-k="'+m[0]+'"></div>'}).join('');
+$('sf').onchange=function(e){var t=e.target,m;if(t.type=='file'&&t.files[0]){m=IM.filter(function(x){return x[0]==t.dataset.k})[0];rs(t.files[0],m[2],m[3],false,'image/png',function(u){imgs[m[0]]=u;$('s_'+m[0]).textContent='✓ ready to save'})}};
+function adm(op,x){var o=x||{};o.op=op;o.pw=$('apw').value;return call(o).then(function(r){
+ if(r.error){msg('am',r.error);return r}msg('am','');$('ad').hidden=false;
+ CF.forEach(function(c){$('c_'+c[0]).value=r.cfg[c[0]]||''});$('c_combined').checked=r.cfg.combined=='YES';IM.forEach(function(m){$('s_'+m[0]).textContent=r.cfg['has_'+m[0]]?'(uploaded)':''});
+ $('pt').innerHTML='<tr><th>Phone</th><th>Name</th><th>Photo</th><th>Allowed</th><th>Taken</th><th>Request</th><th></th></tr>'+r.people.map(function(p){return '<tr><td>'+esc(p.phone)+'</td><td>'+esc(p.name)+'</td><td>'+(p.photo?'✓':'–')+'</td><td>'+p.allowed+'</td><td>'+p.used+'</td><td>'+(p.request=='YES'?'🔔 Requested':'')+'</td><td><button class="s" data-op="retake" data-ph="'+p.phone+'">✔ Allow again</button><button class="s" data-op="photo" data-ph="'+p.phone+'">📷 Photo</button><button class="s" data-op="remove" data-ph="'+p.phone+'">Remove</button></td></tr>'}).join('');
+ $('rt').innerHTML='<tr><th>Name</th><th>Phone</th><th>Score</th><th>Certificate ID</th><th>Date</th></tr>'+r.results.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+esc(p.phone)+'</td><td>'+esc(p.score)+'</td><td>'+esc(p.id)+'</td><td>'+esc(p.date)+'</td></tr>'}).join('');return r})}
+$('pt').onclick=function(e){var t=e.target,o=t.dataset.op;if(!o)return;if(o=='photo'){pfT=t.dataset.ph;$('pf').click()}else if(o!='remove'||confirm('Remove this person?'))adm(o,{phone:t.dataset.ph})};
+$('pf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){adm('photo',{phone:pfT,photo:u})});this.value=''};
+$('npf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){nph=u})};
+$('al').onclick=function(){adm('list')};
+$('ad1').onclick=function(){adm('add',{phone:$('np').value,name:$('nn').value,photo:nph}).then(function(r){if(r&&!r.error){$('np').value=$('nn').value=$('npf').value='';nph=''}})};
+$('sv').onclick=function(){var v={},k;CF.forEach(function(c){v[c[0]]=$('c_'+c[0]).value});v.combined=$('c_combined').checked?'YES':'';for(k in imgs)v[k]=imgs[k];adm('setcfg',{values:v}).then(function(r){if(r&&!r.error){imgs={};msg('am','Settings saved.',true)}})};
+route();
+</script></body></html>
