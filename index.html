@@ -4,7 +4,7 @@
 <title>NextStep AI Learning – Assessment Portal</title>
 <meta name="theme-color" content="#14264f"><meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2314264f' stroke='%23b8923a' stroke-width='3'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='32' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -130,7 +130,40 @@ button:not(:disabled):active{transform:scale(.96)}
 #pre p{margin:0;color:#fff;font:700 20px Sora,sans-serif}#pre p em{font-style:normal;color:#ecd9a0}#pre small{color:#d9c48a;letter-spacing:4px;font:600 10px 'Plus Jakarta Sans',sans-serif}
 #pre .pb{width:150px;height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden}#pre .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#d4af5a,#ecd9a0);animation:ld 1.4s ease-out forwards}@keyframes ld{to{width:100%}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style></head><body>
+
+/* ===== v12 redesign: glass, larger type, loading feedback (certificate #cert untouched) ===== */
+:root{--gold:#d4af5a;--navy:#0b1530}
+body{font-family:Inter,'Plus Jakarta Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;background:radial-gradient(900px 520px at 8% -8%,#1b2d63 0,transparent 60%),radial-gradient(700px 480px at 100% 0,#3a2c0f 0,transparent 55%),#070d22;color:#eef1fb}
+#lbar{position:fixed;left:0;top:0;height:3px;width:0;z-index:999;background:linear-gradient(90deg,#d4af5a,#fff,#d4af5a);box-shadow:0 0 12px #d4af5a;transition:width .4s}
+#lbar.on{width:85%;transition:width 8s cubic-bezier(.1,.7,.2,1)}#lbar.fin{width:100%;opacity:0;transition:width .2s,opacity .4s .2s}
+.sh{background:rgba(11,21,48,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,175,90,.45);position:sticky;top:0;z-index:20}
+.shi b{font:700 19px Sora,Cinzel,serif;letter-spacing:1.5px}.shi small{font-size:12px;color:#ecd9a0}
+.lw{background:transparent}.lp{background:transparent;background-image:none}.lp:after{border-color:rgba(212,175,90,.35);border-radius:22px}
+.lp h2{font:800 40px/1.15 Sora,sans-serif;letter-spacing:.5px;background:linear-gradient(135deg,#fff,#ecd9a0 60%,#d4af5a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lk{font:600 12px Sora,sans-serif;letter-spacing:3px}.lt{font:italic 500 21px 'Cormorant Garamond',serif}
+.lf b{font-size:17px}.lf span{font-size:15.5px;color:#c4cdea}.lc{background:transparent}
+.lcard,.card,.vbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-top:1px solid rgba(255,255,255,.28);border-radius:22px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 14px 50px rgba(0,0,0,.4);color:#eef1fb}
+.lcard{padding:34px 30px 26px}.lh{font:600 12px Sora,sans-serif;color:#ecd9a0;letter-spacing:3px}.lcard h1{font:800 28px/1.2 Sora,sans-serif;color:#fff}
+.sub,.nt{color:#b8c1de;font-size:15.5px}.nt{border-top-color:rgba(255,255,255,.12)}
+h1{font:800 26px Sora,sans-serif;color:#fff}label.f{color:#b8c1de;font-size:15px}
+input[type=text],select,.lcard input[type=text]{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:14px;font-size:17px;padding:14px 16px;min-height:52px}
+.lcard input[type=text]:focus,input[type=text]:focus,select:focus{outline:2px solid #d4af5a;outline-offset:1px}select option{color:#111}
+button{position:relative;overflow:hidden;font:700 16.5px Inter,sans-serif;border-radius:14px;padding:14px 24px;min-height:50px;background:linear-gradient(135deg,#1d3a82,#13275c);border:1px solid rgba(255,255,255,.2);color:#fff;transition:transform .12s,filter .2s,box-shadow .2s}
+button:hover{filter:brightness(1.15)}button:active{transform:scale(.97)}
+#go,button.pri{background:linear-gradient(135deg,#ecd9a0,#d4af5a 55%,#a8832c);color:#1a1405;border:0;box-shadow:0 8px 24px rgba(212,175,90,.3)}
+button.s{background:rgba(255,255,255,.1);color:#fff;font-size:14px;min-height:38px;padding:7px 12px}
+button.ld{pointer-events:none;color:transparent!important}button.ld:after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;margin:-10px;border:2.5px solid rgba(0,0,0,.25);border-top-color:#111;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.rp{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:rpl .6s ease-out;pointer-events:none}@keyframes rpl{to{transform:scale(1);opacity:0}}
+.msg{font-size:15.5px}.er{color:#ff8f8f}.ok{color:#6fe0a0}
+.q{border-bottom-color:rgba(255,255,255,.12);font-size:18px;line-height:1.6}.op{font-size:17px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);transition:.15s}
+.op:hover{background:rgba(255,255,255,.12)}.op:has(input:checked){background:rgba(212,175,90,.18);border-color:#d4af5a}
+.good{background:rgba(79,209,139,.12);border-color:#4fd18b}.bad{background:rgba(255,123,123,.12);border-color:#ff7b7b}.big{color:#6fe0a0;font-size:24px}.vbox td:first-child{color:#b8c1de}
+.sf2{background:rgba(7,13,34,.6);border-top:1px solid rgba(255,255,255,.12);color:#9aa5c8;font-size:14px}
+#view{border-color:rgba(255,255,255,.2);background:#0b1530}
+@media(max-width:820px){.lp h2{font-size:30px}body{font-size:16.5px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><div id="lbar"></div>
 <div id="pre"><svg width="76" height="76" viewBox="0 0 48 48"><circle class="r" cx="24" cy="24" r="22" fill="none" stroke="#d4af5a" stroke-width="1.6"/><path class="a" d="M11 36h8v-8h8v-8h8v-3" fill="none" stroke="#ecd9a0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path class="h" d="M35 8l5.5 8h-11z" fill="#d4af5a"/></svg><p>Next<em>Step</em> AI Learning</p><small>ASSESSMENT PORTAL</small><div class="pb"><i></i></div></div>
 <header class="sh"><div class="shi"><a class="lk2" href="https://nextstepailearning.github.io/" title="Go to NextStep AI Learning website"><span id="lgo"></span><span class="wm"><b>Next<em>Step</em></b><small>AI LEARNING</small></span></a><span id="bn" hidden></span><a class="bk" href="https://nextstepailearning.github.io/">← Main website</a></div></header>
 <div id="vExam" class="ex" hidden>
@@ -179,19 +212,9 @@ button:not(:disabled):active{transform:scale(.96)}
 </div>
  </div></div></div>
 <div id="vVerify" class="wrap"><h1>Certificate Verification</h1><div id="vb" class="vbox"></div></div>
-<div id="vAdmin" class="wrap wide" hidden><div class="card"><h1>⚙ Admin Panel</h1>
- <input type="text" id="apw" placeholder="Admin password" style="-webkit-text-security:disc"><button id="al">Load</button><div id="am" class="msg"></div></div>
- <div id="ad" hidden><div class="card"><b>Add a participant</b><div class="g"><input type="text" id="np" placeholder="Mobile number"><input type="text" id="nn" placeholder="Name (as printed on certificate)"><input type="file" id="npf" accept="image/*"></div><button id="ad1">Add</button></div>
- <div class="card"><b>Allowed list</b><table class="t" id="pt"></table><input type="file" id="pf" accept="image/*" hidden></div>
- <div class="card"><b>Recent results</b><table class="t" id="rt"></table></div>
- <div class="card"><b>Main website content</b><p class="sub">Controls the main website (nextstepailearning.github.io). Changes appear there automatically.</p>
- <label class="f">Profile photo <span id="sph"></span></label><input type="file" id="spf" accept="image/*">
- <label class="f" style="margin-top:14px"><input type="checkbox" id="swd"> Show the sample (demo) projects and the sample notice on the website. Untick this once you have added your own projects.</label>
- <div style="margin-top:16px"><b>Add a real project</b><div class="g"><input type="text" id="pjt" placeholder="Project title"><input type="text" id="pjg" placeholder="Category (e.g. Factory training)"><input type="text" id="pjd" placeholder="Short description"><input type="file" id="pji" accept="image/*"></div><button id="pja">Add project</button></div>
- <table class="t" id="pjl"></table><div id="sm" class="msg"></div></div>
- <div class="card"><b>Certificate settings</b><div class="g" id="sf"></div><button id="sv">Save settings</button></div></div></div>
 <footer class="sf2"><span id="ft">© NextStep AI Learning. All rights reserved.</span> · Certificates can be verified online using the QR code.</footer>
 <script>
+var ADMIN='https://nextstepailearning.github.io/NextStepAdmin/';
 var HOME='https://nextstepailearning.github.io/';
 var SITE='https://nextstepailearning.github.io/NextStepExam/';
 var API='https://script.google.com/macros/s/AKfycbyZGvLqByBlYr9I629_FC08W9sp_JSXhERwIPLr1Ddc7kDVAmwfJnWXdxrgzLsXpuHO/exec';
@@ -233,10 +256,12 @@ function mkqr(text){var q=$('qr'),t=document.createElement('div'),cv,im=new Imag
  im.style.cssText='display:block;width:84px;height:84px';im.width=84;im.height=84;im.src=src;q.appendChild(im)}
 function fit(){var w=$('view').clientWidth,s=Math.min(1,w/1123);$('stage').style.transform='scale('+s+')';$('view').style.height=(794*s)+'px'}
 function rs(f,w,h,cover,type,cb,q){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var s=cover?Math.max(w/i.width,h/i.height):Math.min(w/i.width,h/i.height,1),dw=i.width*s,dh=i.height*s,W=cover?w:Math.round(dw),H=cover?h:Math.round(dh),c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');if(type=='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,W,H)}x.drawImage(i,(W-dw)/2,(H-dh)/2,dw,dh);cb(c.toDataURL(type,q||.8))};i.src=r.result};r.readAsDataURL(f)}
-function call(o,ka){return fetch(API,{method:'POST',keepalive:!!ka,body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}})}
-function show(id){['vExam','vCert','vVerify','vAdmin','vCancel'].forEach(function(x){$(x).hidden=x!=id})}
+var BN=0;var LB=null;document.addEventListener('pointerdown',function(e){LB=e.target.closest&&e.target.closest('button')});
+function bz(on){var b=$('lbar');if(!b)return;if(on){if(LB&&!BN)LB.classList.add('ld');BN++;b.className='';void b.offsetWidth;b.className='on'}else if(--BN<=0){BN=0;b.className='fin';[].forEach.call(document.querySelectorAll('button.ld'),function(x){x.classList.remove('ld')})}}
+function call(o,ka){bz(1);return fetch(API,{method:'POST',keepalive:!!ka,body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}}).then(function(x){bz(0);return x})}
+function show(id){['vExam','vCert','vVerify','vCancel'].forEach(function(x){$(x).hidden=x!=id})}
 function msg(id,t,ok){$(id).textContent=t||'';$(id).className='msg '+(ok?'ok':'er')}
-function route(){var h=location.hash;if(h.indexOf('#/verify/')==0){show('vVerify');doVerify(decodeURIComponent(h.slice(9)))}else if(h=='#/admin')show('vAdmin');else show('vExam')}
+function route(){var h=location.hash;if(h.indexOf('#/verify/')==0){show('vVerify');doVerify(decodeURIComponent(h.slice(9)))}else if(h=='#/admin'){location.replace(ADMIN);return}else show('vExam')}
 window.onhashchange=route;window.onresize=fit;
 brand({});call({op:'brand'}).then(function(r){if(r&&!r.error)brand(r)});
 $('ph').onkeydown=function(e){if(e.key=='Enter')$('go').click()};
@@ -307,30 +332,7 @@ function doVerify(id){var b=$('vb');b.className='vbox';b.textContent='Verifying�
   if(r.error){b.className='vbox bad';b.innerHTML='❌ '+esc(r.error)+'<br><small>ID: '+esc(id)+'</small>';return}
   var c=r.cert;b.className='vbox good';
   b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>Training</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
-var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['minutes','Exam time limit (select)'],['pass_percent','Pass mark in % (certificate only if score is at least this, default 50)'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
-var MN=['5','10','15','20','25','30','45','60','90'];
-var IM=[['logo','Logo (optional)',220,90],['sig_trainer','Trainer signature (PNG). Also used when Trainer and Director are the same person',320,120],['sig_director','Director signature (PNG)',320,120]];
-$('sf').innerHTML=CF.map(function(c){return '<div><label class="f">'+c[1]+'</label>'+(c[2]?'<select id="c_'+c[0]+'"><option value="">Not shown</option><option>Online</option><option>In-Person</option></select>':'<input type="text" id="c_'+c[0]+'">')+'</div>'}).join('')+'<div><label class="f"><input type="checkbox" id="c_combined"> Trainer and Director are the same person (one signature)</label></div>'+IM.map(function(m){return '<div><label class="f">'+m[1]+' <span id="s_'+m[0]+'"></span></label><input type="file" accept="image/*" data-k="'+m[0]+'"></div>'}).join('');
-(function(){var o=$('c_minutes'),e=document.createElement('select');e.id='c_minutes';e.innerHTML='<option value="">No time limit</option>'+MN.map(function(x){return '<option value="'+x+'">'+x+' minutes</option>'}).join('');o.parentNode.replaceChild(e,o)})();
-$('sf').onchange=function(e){var t=e.target,m;if(t.type=='file'&&t.files[0]){m=IM.filter(function(x){return x[0]==t.dataset.k})[0];rs(t.files[0],m[2],m[3],false,'image/png',function(u){imgs[m[0]]=u;$('s_'+m[0]).textContent='✓ ready to save'})}};
-function adm(op,x){var o=x||{};o.op=op;o.pw=$('apw').value;return call(o).then(function(r){
- if(r.error){msg('am',r.error);return r}msg('am','');$('ad').hidden=false;
- CF.forEach(function(c){var el=$('c_'+c[0]);if(c[0]=='minutes'&&r.cfg.minutes&&MN.indexOf(r.cfg.minutes)<0)el.add(new Option(r.cfg.minutes+' minutes',r.cfg.minutes));el.value=r.cfg[c[0]]||''});$('c_combined').checked=r.cfg.combined=='YES';IM.forEach(function(m){$('s_'+m[0]).textContent=r.cfg['has_'+m[0]]?'(uploaded)':''});
- var S=r.site||{projects:[]};$('swd').checked=S.demo!==false;$('sph').textContent=S.has_photo?'(uploaded)':'(using default)';$('pjl').innerHTML=S.projects.length?'<tr><th>Your projects</th><th>Category</th><th></th></tr>'+S.projects.map(function(p){return '<tr><td>'+esc(p.title)+'</td><td>'+esc(p.tag)+'</td><td><button class="s" data-pj="'+p.id+'">Remove</button></td></tr>'}).join(''):'';
- $('pt').innerHTML='<tr><th>Phone</th><th>Name</th><th>Photo</th><th>Allowed</th><th>Taken</th><th>Request</th><th></th></tr>'+r.people.map(function(p){return '<tr><td>'+esc(p.phone)+'</td><td>'+esc(p.name)+'</td><td>'+(p.photo?'✓':'–')+'</td><td>'+p.allowed+'</td><td>'+p.used+'</td><td>'+(p.request=='YES'?'🔔 Requested':'')+'</td><td><button class="s" data-op="retake" data-ph="'+p.phone+'">✔ Allow again</button><button class="s" data-op="photo" data-ph="'+p.phone+'">📷 Photo</button><button class="s" data-op="remove" data-ph="'+p.phone+'">Remove</button></td></tr>'}).join('');
- $('rt').innerHTML='<tr><th>Name</th><th>Phone</th><th>Score</th><th>Certificate ID</th><th>Date</th><th>Status</th></tr>'+r.results.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+esc(p.phone)+'</td><td>'+esc(p.score)+'</td><td>'+esc(p.id)+'</td><td>'+esc(p.date)+'</td><td>'+(p.status=='CANCELLED'?'❌ Cancelled':p.status=='FAILED'?'✖ Not passed':'✓')+'</td></tr>'}).join('');return r})}
-$('pt').onclick=function(e){var t=e.target,o=t.dataset.op;if(!o)return;if(o=='photo'){pfT=t.dataset.ph;$('pf').click()}else if(o!='remove'||confirm('Remove this person?'))adm(o,{phone:t.dataset.ph})};
-$('pf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){adm('photo',{phone:pfT,photo:u})});this.value=''};
-$('npf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){nph=u})};
-$('al').onclick=function(){adm('list')};
-$('ad1').onclick=function(){adm('add',{phone:$('np').value,name:$('nn').value,photo:nph}).then(function(r){if(r&&!r.error){$('np').value=$('nn').value=$('npf').value='';nph=''}})};
-$('sv').onclick=function(){var v={},k;CF.forEach(function(c){v[c[0]]=$('c_'+c[0]).value});v.combined=$('c_combined').checked?'YES':'';for(k in imgs)v[k]=imgs[k];adm('setcfg',{values:v}).then(function(r){if(r&&!r.error){imgs={};msg('am','Settings saved.',true)}})};
-var pjImg='';
-$('spf').onchange=function(){var f=this.files[0];if(f)rs(f,300,375,true,'image/jpeg',function(u){adm('setcfg',{values:{site_photo:u}}).then(function(r){if(r&&!r.error)msg('sm','Profile photo saved. The website will show it.',true)})},.7);this.value=''};
-$('swd').onchange=function(){adm('setcfg',{values:{site_demo:this.checked?'YES':'NO'}}).then(function(r){if(r&&!r.error)msg('sm',$('swd').checked?'Sample projects are now shown.':'Sample projects and the sample notice are now hidden.',true)})};
-$('pji').onchange=function(){var f=this.files[0];if(f)rs(f,480,300,true,'image/jpeg',function(u){pjImg=u},.6)};
-$('pja').onclick=function(){adm('addproject',{title:$('pjt').value,tag:$('pjg').value,desc:$('pjd').value,image:pjImg}).then(function(r){if(r&&!r.error){$('pjt').value=$('pjg').value=$('pjd').value=$('pji').value='';pjImg='';msg('sm','Project added.',true)}})};
-$('pjl').onclick=function(e){var id=e.target.dataset.pj;if(id&&confirm('Remove this project?'))adm('delproject',{id:id})};
+
 route();
 </script><script>
 (function(){var p=document.getElementById('pre'),t0=Date.now(),d=false;function go(){if(d||!p)return;d=true;setTimeout(function(){p.classList.add('done');setTimeout(function(){p.remove()},700)},Math.max(0,1200-(Date.now()-t0)))}
