@@ -62,9 +62,16 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
 .mi b{display:block;font:600 22px 'Cormorant Garamond',serif}.mi small{font:600 9px Cinzel,serif;letter-spacing:3px;color:#a67c1f}
 .bt{position:absolute;left:88px;right:88px;bottom:62px;display:flex;justify-content:space-between;align-items:flex-end}
 .bl{width:390px}.br{width:390px;display:flex;justify-content:flex-end;gap:26px}
-.qb{display:inline-block;text-align:center;background:#fff;padding:6px;border:1px solid #d9c9a0}.qb #qr{width:84px;height:84px}.qb small{display:block;font:600 7.5px Cinzel,serif;letter-spacing:1.5px;margin-top:3px}
+.qb{display:block;width:98px;text-align:center;background:#fff;padding:6px;border:1px solid #d9c9a0}.qb #qr{width:84px;height:84px}.qb small{display:block;font:600 7.5px Cinzel,serif;letter-spacing:1.5px;margin-top:3px}
 .sg{text-align:center}.sg .im{height:62px;display:flex;align-items:flex-end;justify-content:center}.sg img{max-height:60px;max-width:170px}
 .sg .sc{font:70px/.8 'Mrs Saint Delafield',cursive}.sg .ln{border-top:1.5px solid #14264f;padding-top:6px;font:700 14px 'Plus Jakarta Sans',sans-serif}.sg .rl{font:500 12px 'Plus Jakarta Sans',sans-serif;color:#5b6180;margin-top:2px}
+
+.rules{margin:10px 0 4px;padding-left:20px;font-size:14px;line-height:1.7;color:#2a3150}.rules li{margin-bottom:4px}.rules .w{color:#c62828;font-weight:600}
+.qh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;color:#14264f}
+.tm{font:700 16px 'Plus Jakarta Sans',sans-serif;background:#eef1fa;padding:5px 12px;border-radius:20px}.tm.low{background:#fdecea;color:#c62828}
+.pg{height:6px;background:#e7eaf3;border-radius:4px;margin:10px 0 18px;overflow:hidden}.pg i{display:block;height:100%;width:0;background:#b8923a;transition:width .25s}
+.qt{font-size:18px;line-height:1.6;font-weight:600;margin-bottom:6px}.ns{-webkit-user-select:none;user-select:none}
+.nv{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.nv button{flex:1;margin-top:0}.nv .s2{background:#eef1fa;color:#14264f}
 </style></head><body>
 <header class="sh"><div class="shi"><span id="lgo"></span><div><b id="bn">NextStep AI Learning</b><small>Online Assessment Portal</small></div></div></header>
 <div id="vExam" class="ex" hidden>
@@ -85,9 +92,16 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
    <div class="nt"><b>Need help?</b> If your number is not recognised, please contact your training coordinator. Each participant may take the assessment once unless a retake is approved.</div>
   </div></section>
  </div>
- <div id="qz" class="wrap" hidden><div class="card"><h1>Welcome, <span id="who"></span></h1><div id="qs"></div>
-  <button id="sub" disabled>Submit (<span id="cnt"></span>)</button><div id="m2" class="msg"></div></div></div>
+ <div id="ins" class="wrap" hidden><div class="card"><div class="lh">INSTRUCTIONS</div><h1>Welcome, <span id="who"></span></h1>
+  <ul class="rules" id="rules"></ul><button id="st">Start Assessment</button><div id="m2" class="msg"></div></div></div>
+ <div id="qz" class="wrap ns" hidden><div class="card"><div class="qh"><span id="qn"></span><span id="tm" class="tm" hidden></span></div>
+  <div class="pg"><i id="pb"></i></div><div id="qs"></div>
+  <div class="nv"><button class="s2" id="pv">Previous</button><button id="nx" disabled>Next</button></div><div id="m4" class="msg"></div></div></div>
 </div>
+<div id="vCancel" class="wrap" hidden><div class="card" id="cc" style="border-top:4px solid #c62828"><div class="lh" id="cl" style="color:#c62828">ASSESSMENT CANCELLED</div>
+ <h1 id="ch">Your assessment was cancelled</h1><p id="cm" class="sub"></p>
+ <button id="vc" class="s" style="padding:12px 16px" hidden>View my previous certificate</button>
+ <button id="rq2">Request another attempt</button><div id="m5" class="msg"></div></div></div>
 <div id="vCert" class="wrap wide" hidden><div class="card"><b>🎉 Your score: <span id="sc"></span></b><br>
  <button id="dl">⬇ Download Certificate (PDF)</button> <button id="rq" class="s" style="padding:12px 16px;margin-top:12px">🔁 Request another attempt</button><div id="m3" class="msg"></div></div>
  <div id="view"><div id="stage">
@@ -115,7 +129,7 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
 <script>
 var API='https://script.google.com/macros/s/AKfycbyZGvLqByBlYr9I629_FC08W9sp_JSXhERwIPLr1Ddc7kDVAmwfJnWXdxrgzLsXpuHO/exec';
 var $=function(i){return document.getElementById(i)};
-var D={},N=0,creds={},imgs={},nph='',pfT='';
+var D={},creds={},imgs={},nph='',pfT='';
 function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function render(){
  var v=function(k){return String(D[k]==null?'':D[k]).trim()},g='',i;
@@ -151,21 +165,55 @@ function mkqr(text){var q=$('qr'),t=document.createElement('div'),cv,im=new Imag
  im.style.cssText='display:block;width:84px;height:84px';im.width=84;im.height=84;im.src=src;q.appendChild(im)}
 function fit(){var w=$('view').clientWidth,s=Math.min(1,w/1123);$('stage').style.transform='scale('+s+')';$('view').style.height=(794*s)+'px'}
 function rs(f,w,h,cover,type,cb){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var s=cover?Math.max(w/i.width,h/i.height):Math.min(w/i.width,h/i.height,1),dw=i.width*s,dh=i.height*s,W=cover?w:Math.round(dw),H=cover?h:Math.round(dh),c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');if(type=='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,W,H)}x.drawImage(i,(W-dw)/2,(H-dh)/2,dw,dh);cb(c.toDataURL(type,.8))};i.src=r.result};r.readAsDataURL(f)}
-function call(o){return fetch(API,{method:'POST',body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}})}
-function show(id){['vExam','vCert','vVerify','vAdmin'].forEach(function(x){$(x).hidden=x!=id})}
+function call(o,ka){return fetch(API,{method:'POST',keepalive:!!ka,body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}})}
+function show(id){['vExam','vCert','vVerify','vAdmin','vCancel'].forEach(function(x){$(x).hidden=x!=id})}
 function msg(id,t,ok){$(id).textContent=t||'';$(id).className='msg '+(ok?'ok':'er')}
 function route(){var h=location.hash;if(h.indexOf('#/verify/')==0){show('vVerify');doVerify(decodeURIComponent(h.slice(9)))}else if(h=='#/admin')show('vAdmin');else show('vExam')}
 window.onhashchange=route;window.onresize=fit;
 brand({});call({op:'brand'}).then(function(r){if(r&&!r.error)brand(r)});
 $('ph').onkeydown=function(e){if(e.key=='Enter')$('go').click()};
+var EX={on:false};
+function sub(id){['lg','ins','qz'].forEach(function(x){$(x).hidden=x!=id})}
 $('go').onclick=function(){var b=this;b.disabled=true;creds={phone:$('ph').value};
  call({op:'login',phone:creds.phone}).then(function(r){b.disabled=false;
-  if(r.error)return msg('m1',r.error);if(r.cert)return showCert(r.cert,r.requested);
-  $('lg').hidden=true;$('qz').hidden=false;$('who').textContent=r.name;buildQ(r.questions)})};
-function buildQ(qs){N=qs.length;$('qs').innerHTML=qs.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+esc(q.q)+'</b>'+['A','B','C','D'].filter(function(k){return q.o[k]}).map(function(k){return '<label class="op"><input type="radio" name="q'+i+'" value="'+k+'"> '+esc(q.o[k])+'</label>'}).join('')+'</div>'}).join('');$('qs').onchange=chk;chk()}
-function chk(){var n=document.querySelectorAll('#qs input:checked').length;$('sub').disabled=n<N;$('cnt').textContent=n+'/'+N}
-$('sub').onclick=function(){var a=[];for(var i=0;i<N;i++)a.push(document.querySelector('input[name=q'+i+']:checked').value);this.disabled=true;
- call({op:'submit',phone:creds.phone,answers:a}).then(function(r){if(r.error)return msg('m2',r.error);showCert(r.cert,false)})};
+  if(r.error)return msg('m1',r.error);if(r.cancelled||r.failed)return showCancel(r);if(r.cert)return showCert(r.cert,r.requested);
+  $('who').textContent=r.name;
+  $('rules').innerHTML=['Total questions: <b>'+r.count+'</b>.',r.minutes?'Time allowed: <b>'+r.minutes+' minutes</b>. The assessment is submitted automatically when time runs out.':'There is no time limit.',
+   'Questions appear <b>one at a time</b>. Select an answer and press <b>Next</b>.',
+   '<span class="w">Do not switch tabs, minimise the browser or leave this page. Doing so cancels your assessment immediately.</span>',
+   'You have <b>one attempt</b>. A cancelled or completed attempt can be repeated only if the coordinator approves.',
+   'Pass mark: at least <b>'+r.need+' of '+r.count+'</b> correct answers ('+r.pass+'%) are needed to receive a certificate.'].concat(r.inprogress?['<b>An assessment is already in progress for this number. It will continue with the remaining time.</b>']:[]).map(function(x){return '<li>'+x+'</li>'}).join('');
+  sub('ins')})};
+$('ph').onkeydown=function(e){if(e.key=='Enter')$('go').click()};
+$('st').onclick=function(){var b=this;b.disabled=true;
+ call({op:'start',phone:creds.phone}).then(function(r){b.disabled=false;
+  if(r.error)return msg('m2',r.error);if(r.cancelled||r.failed)return showCancel(r);if(r.cert)return showCert(r.cert,r.requested);
+  EX={on:true,busy:false,qs:r.questions,i:0,ans:r.questions.map(function(){return ''}),end:r.remaining?Date.now()+r.remaining*1000:0};
+  sub('qz');$('tm').hidden=!EX.end;showQ();if(EX.end){tick();EX.t=setInterval(tick,500)}})};
+function tick(){if(!EX.on)return;var l=Math.max(0,Math.round((EX.end-Date.now())/1000)),m=Math.floor(l/60),s=l%60;
+ $('tm').textContent='⏱ '+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;$('tm').className='tm'+(l<=60?' low':'');if(l<=0)finish()}
+function showQ(){var q=EX.qs[EX.i],n=EX.qs.length,last=EX.i==n-1;
+ $('qn').textContent='Question '+(EX.i+1)+' of '+n;$('pb').style.width=((EX.i+1)/n*100)+'%';
+ $('qs').innerHTML='<div class="qt">'+esc(q.q)+'</div>'+['A','B','C','D'].filter(function(k){return q.o[k]}).map(function(k){return '<label class="op"><input type="radio" name="q" value="'+k+'"'+(EX.ans[EX.i]==k?' checked':'')+'> '+esc(q.o[k])+'</label>'}).join('');
+ $('pv').disabled=EX.i==0;$('nx').textContent=last?'Submit Assessment':'Next';$('nx').disabled=!EX.ans[EX.i];msg('m4','')}
+$('qs').onchange=function(e){if(e.target.name=='q'){EX.ans[EX.i]=e.target.value;$('nx').disabled=false}};
+$('pv').onclick=function(){if(EX.i>0){EX.i--;showQ()}};
+$('nx').onclick=function(){if(EX.i<EX.qs.length-1){EX.i++;showQ()}else if(confirm('Submit your answers now? You cannot change them afterwards.'))finish()};
+function finish(){if(!EX.on||EX.busy)return;EX.busy=true;clearInterval(EX.t);$('nx').disabled=$('pv').disabled=true;msg('m4','Submitting…',true);
+ call({op:'submit',phone:creds.phone,answers:EX.ans}).then(function(r){EX.on=false;
+  if(r.error){EX.busy=false;$('nx').disabled=false;return msg('m4',r.error)}
+  if(r.cancelled||r.failed)return showCancel(r);showCert(r.cert,false)})}
+function leave(){if(!EX.on||EX.busy)return;EX.on=false;clearInterval(EX.t);call({op:'cancel',phone:creds.phone},true);showCancel({fresh:true})}
+document.addEventListener('visibilitychange',function(){if(document.hidden)leave()});
+window.addEventListener('pagehide',leave);
+$('qz').oncontextmenu=function(e){e.preventDefault()};
+var LC=null;
+function showCancel(r){LC=r;show('vCancel');$('vc').hidden=!r.cert;$('rq2').hidden=!!r.requested;msg('m5',r.requested?RQ:'',true);
+ var f=!!r.failed;$('cc').style.borderTopColor=f?'#14264f':'#c62828';$('cl').style.color=f?'#a67c1f':'#c62828';$('cl').textContent=f?'RESULT':'ASSESSMENT CANCELLED';$('ch').textContent=f?'You did not reach the pass mark':'Your assessment was cancelled';
+ if(f){$('cm').textContent='Your score: '+r.score+'. At least '+r.need+' correct answers ('+r.pass+'%) are needed to receive a certificate. This counts as your attempt.';return}
+ $('cm').textContent=r.fresh?'You switched tabs, minimised the browser or left the assessment page, so the assessment was cancelled automatically. This counts as your attempt and no certificate was issued.':'This attempt was cancelled (you left the page, switched tabs, or the time ran out) and no certificate was issued for it.'}
+$('vc').onclick=function(){if(LC&&LC.cert)showCert(LC.cert,LC.requested)};
+$('rq2').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m5',r.error);$('rq2').hidden=true;msg('m5',RQ,true)})};
 var RQ='Request sent. You can retake the exam once the admin allows it.';
 function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(location.href.split('#')[0]+'#/verify/'+c.certId);
  if(document.fonts)document.fonts.ready.then(function(){render();fit()})}
@@ -173,6 +221,10 @@ $('rq').onclick=function(){call({op:'request',phone:creds.phone}).then(function(
 $('dl').onclick=async function(){var b=this,st=$('stage'),old=st.style.transform;b.disabled=true;b.textContent='Preparing…';
  try{await document.fonts.ready;var qi=$('qr').querySelector('img');if(qi&&qi.decode)await qi.decode().catch(function(){});st.style.transform='none';
   var c=await html2canvas($('cert'),{scale:3,useCORS:true,backgroundColor:null,width:1123,height:794,scrollX:0,scrollY:0});
+  var S=3,cx=c.getContext('2d'),cr=$('cert').getBoundingClientRect(),R=function(e){var q=e.getBoundingClientRect();return[(q.left-cr.left)*S,(q.top-cr.top)*S,q.width*S,q.height*S]};
+  var qb=R(document.querySelector('.qb'));cx.fillStyle='#fff';cx.fillRect(qb[0],qb[1],qb[2],qb[3]);cx.strokeStyle='#d9c9a0';cx.lineWidth=S;cx.strokeRect(qb[0]+S/2,qb[1]+S/2,qb[2]-S,qb[3]-S);
+  cx.imageSmoothingEnabled=true;Array.prototype.forEach.call($('cert').querySelectorAll('img'),function(im){if(!im.complete||!im.naturalWidth)return;var r=R(im);if(im.parentNode.id=='qr')cx.imageSmoothingEnabled=false;cx.drawImage(im,r[0],r[1],r[2],r[3]);cx.imageSmoothingEnabled=true});
+  var sm=document.querySelector('.qb small'),sr=sm.getBoundingClientRect();cx.fillStyle='#14264f';cx.textAlign='center';cx.font='600 '+(7.5*S)+'px Cinzel,serif';if('letterSpacing' in cx)cx.letterSpacing=(1.5*S)+'px';cx.fillText('SCAN TO VERIFY',(sr.left+sr.width/2-cr.left)*S,(sr.bottom-cr.top-2)*S);if('letterSpacing' in cx)cx.letterSpacing='0px';
   var pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:[297,210]});
   pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,297,210);pdf.save('Certificate-'+D.name.replace(/\s+/g,'_')+'.pdf')}
  catch(e){alert('Could not create PDF: '+e.message)}
@@ -182,7 +234,7 @@ function doVerify(id){var b=$('vb');b.className='vbox';b.textContent='Verifying�
   if(r.error){b.className='vbox bad';b.innerHTML='❌ '+esc(r.error)+'<br><small>ID: '+esc(id)+'</small>';return}
   var c=r.cert;b.className='vbox good';
   b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>Training</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
-var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
+var CF=[['org','Organization name'],['tagline','Tagline (optional)'],['title','Training title'],['minutes','Exam time limit in minutes (optional, empty = no limit)'],['pass_percent','Pass mark in % (certificate only if score is at least this, default 50)'],['hours','Training hours, number only (optional)'],['mode','Mode (optional)',1],['venue','Venue (optional)'],['batch','Batch no. (optional)'],['trainer','Trainer name'],['trainer_role','Trainer designation'],['director','Director name'],['director_role','Director designation']];
 var IM=[['logo','Logo (optional)',220,90],['sig_trainer','Trainer signature (PNG). Also used when Trainer and Director are the same person',320,120],['sig_director','Director signature (PNG)',320,120]];
 $('sf').innerHTML=CF.map(function(c){return '<div><label class="f">'+c[1]+'</label>'+(c[2]?'<select id="c_'+c[0]+'"><option value="">Not shown</option><option>Online</option><option>In-Person</option></select>':'<input type="text" id="c_'+c[0]+'">')+'</div>'}).join('')+'<div><label class="f"><input type="checkbox" id="c_combined"> Trainer and Director are the same person (one signature)</label></div>'+IM.map(function(m){return '<div><label class="f">'+m[1]+' <span id="s_'+m[0]+'"></span></label><input type="file" accept="image/*" data-k="'+m[0]+'"></div>'}).join('');
 $('sf').onchange=function(e){var t=e.target,m;if(t.type=='file'&&t.files[0]){m=IM.filter(function(x){return x[0]==t.dataset.k})[0];rs(t.files[0],m[2],m[3],false,'image/png',function(u){imgs[m[0]]=u;$('s_'+m[0]).textContent='✓ ready to save'})}};
@@ -190,7 +242,7 @@ function adm(op,x){var o=x||{};o.op=op;o.pw=$('apw').value;return call(o).then(f
  if(r.error){msg('am',r.error);return r}msg('am','');$('ad').hidden=false;
  CF.forEach(function(c){$('c_'+c[0]).value=r.cfg[c[0]]||''});$('c_combined').checked=r.cfg.combined=='YES';IM.forEach(function(m){$('s_'+m[0]).textContent=r.cfg['has_'+m[0]]?'(uploaded)':''});
  $('pt').innerHTML='<tr><th>Phone</th><th>Name</th><th>Photo</th><th>Allowed</th><th>Taken</th><th>Request</th><th></th></tr>'+r.people.map(function(p){return '<tr><td>'+esc(p.phone)+'</td><td>'+esc(p.name)+'</td><td>'+(p.photo?'✓':'–')+'</td><td>'+p.allowed+'</td><td>'+p.used+'</td><td>'+(p.request=='YES'?'🔔 Requested':'')+'</td><td><button class="s" data-op="retake" data-ph="'+p.phone+'">✔ Allow again</button><button class="s" data-op="photo" data-ph="'+p.phone+'">📷 Photo</button><button class="s" data-op="remove" data-ph="'+p.phone+'">Remove</button></td></tr>'}).join('');
- $('rt').innerHTML='<tr><th>Name</th><th>Phone</th><th>Score</th><th>Certificate ID</th><th>Date</th></tr>'+r.results.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+esc(p.phone)+'</td><td>'+esc(p.score)+'</td><td>'+esc(p.id)+'</td><td>'+esc(p.date)+'</td></tr>'}).join('');return r})}
+ $('rt').innerHTML='<tr><th>Name</th><th>Phone</th><th>Score</th><th>Certificate ID</th><th>Date</th><th>Status</th></tr>'+r.results.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+esc(p.phone)+'</td><td>'+esc(p.score)+'</td><td>'+esc(p.id)+'</td><td>'+esc(p.date)+'</td><td>'+(p.status=='CANCELLED'?'❌ Cancelled':p.status=='FAILED'?'✖ Not passed':'✓')+'</td></tr>'}).join('');return r})}
 $('pt').onclick=function(e){var t=e.target,o=t.dataset.op;if(!o)return;if(o=='photo'){pfT=t.dataset.ph;$('pf').click()}else if(o!='remove'||confirm('Remove this person?'))adm(o,{phone:t.dataset.ph})};
 $('pf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){adm('photo',{phone:pfT,photo:u})});this.value=''};
 $('npf').onchange=function(){if(this.files[0])rs(this.files[0],200,250,true,'image/jpeg',function(u){nph=u})};
