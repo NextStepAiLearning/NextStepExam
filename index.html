@@ -361,12 +361,13 @@ function render(){
  $('pho').hidden=!v('photo');$('pho').innerHTML=v('photo')?'<img src="'+D.photo+'">':'';
  var id=v('certId');$('cno').textContent=id.slice(0,4)+'-'+id.slice(4);
  $('o_name').textContent=v('name');
- var m=v('mode'),h=parseFloat(v('hours')),ve=v('venue');
- $('o_ds').innerHTML='has successfully completed the '+(h?h+'-hour ':'')+'training programme <b>“'+esc(v('title'))+'”</b>'+(m?', delivered '+(m=='Online'?'online':'in person'):'')+(ve?' at '+esc(ve):'')+', and passed the assessment with a score of <b>'+esc(v('score'))+'</b>.';
- $('mr').innerHTML=[['Issue Date',v('date')],['Duration',h?h+' Hours':''],['Mode',m],['Batch No.',v('batch')]].filter(function(x){return x[1]}).map(function(x){return '<div class="mi"><b>'+esc(x[1])+'</b><small>'+x[0].toUpperCase()+'</small></div>'}).join('');
+ var m=v('mode'),h=parseFloat(v('hours')),ve=v('venue'),ex=v('kind')=='EXAM';   // EXAM = assessment-only certificate (no training claim)
+ if(ex)$('o_ds').innerHTML='has successfully passed the online AI assessment <b>“'+esc(v('title'))+'”</b> conducted by '+esc(v('org'))+', and obtained a score of <b>'+esc(v('score'))+'</b>.';
+ else $('o_ds').innerHTML='has successfully completed the '+(h?h+'-hour ':'')+'training programme <b>“'+esc(v('title'))+'”</b>'+(m?', delivered '+(m=='Online'?'online':'in person'):'')+(ve?' at '+esc(ve):'')+', and passed the assessment with a score of <b>'+esc(v('score'))+'</b>.';
+ $('mr').innerHTML=(ex?[['Issue Date',v('date')],['Assessment','Online']]:[['Issue Date',v('date')],['Duration',h?h+' Hours':''],['Mode',m],['Batch No.',v('batch')]]).filter(function(x){return x[1]}).map(function(x){return '<div class="mi"><b>'+esc(x[1])+'</b><small>'+x[0].toUpperCase()+'</small></div>'}).join('');
  var sig=function(n,r,im,w){return '<div class="sg" style="width:'+w+'px"><div class="im">'+(im?'<img src="'+im+'">':'<div class="sc">'+esc(n)+'</div>')+'</div><div class="ln">'+esc(n)+'</div><div class="rl">'+esc(r)+'</div></div>'},s='';
- if(v('combined')=='YES'&&v('trainer'))s=sig(v('trainer'),v('trainer_role')||'Trainer & Director',v('sig_trainer'),240);
- else{if(v('trainer'))s+=sig(v('trainer'),v('trainer_role')||'Trainer',v('sig_trainer'),190);if(v('director'))s+=sig(v('director'),v('director_role')||'Director',v('sig_director'),190)}
+ if(v('combined')=='YES'&&v('trainer'))s=sig(v('trainer'),ex?(v('exam_role')||'Examiner & Director'):(v('trainer_role')||'Trainer & Director'),v('sig_trainer'),240);
+ else{if(v('trainer'))s+=sig(v('trainer'),ex?'Examiner':(v('trainer_role')||'Trainer'),v('sig_trainer'),190);if(v('director'))s+=sig(v('director'),v('director_role')||'Director',v('sig_director'),190)}
  $('sigs').innerHTML=s;
  var p='';for(i=0;i<48;i++){var a=i*Math.PI/24,r=i%2?56:51;p+=(i?'L':'M')+(60+r*Math.cos(a)).toFixed(1)+' '+(60+r*Math.sin(a)).toFixed(1)}
  $('seal').innerHTML='<defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9cf8a"/><stop offset=".5" stop-color="#b8923a"/><stop offset="1" stop-color="#8d6a1c"/></linearGradient><path id="sp" d="M60 60 m-33 0 a33 33 0 1 1 66 0 a33 33 0 1 1 -66 0"/></defs><path d="'+p+'Z" fill="url(#gd)"/><circle cx="60" cy="60" r="45" fill="none" stroke="#fff6dc" stroke-width="1.2"/><circle cx="60" cy="60" r="25" fill="#14264f" stroke="#fff6dc" stroke-width="1.2"/><path d="M60 46 L63.5 56.5 L74 60 L63.5 63.5 L60 74 L56.5 63.5 L46 60 L56.5 56.5Z" fill="#e9cf8a"/><text font-family="Arial,sans-serif" font-weight="700" font-size="7.5" fill="#fff6dc" letter-spacing="1.8"><textPath href="#sp" startOffset="50%" text-anchor="middle">OFFICIAL SEAL • VERIFIED</textPath></text>';
@@ -465,7 +466,7 @@ function doVerify(id){var b=$('vb');b.className='vbox';b.textContent='Verifying�
  call({op:'verify',id:id}).then(function(r){
   if(r.error){b.className='vbox bad';b.innerHTML='❌ '+esc(r.error)+'<br><small>ID: '+esc(id)+'</small>';return}
   var c=r.cert;b.className='vbox good';
-  b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>Training</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
+  b.innerHTML=(c.photo?'<img src="'+c.photo+'" style="width:84px;height:105px;float:right;border-radius:6px">':'')+'<div class="big">✅ Genuine, verified certificate</div><table><tr><td>Name</td><td><b>'+esc(c.name)+'</b></td></tr><tr><td>'+(c.kind=='EXAM'?'Assessment':'Training')+'</td><td>'+esc(c.title)+'</td></tr><tr><td>Issued by</td><td>'+esc(c.org)+'</td></tr><tr><td>Score</td><td>'+esc(c.score)+'</td></tr><tr><td>Date</td><td>'+esc(c.date)+'</td></tr><tr><td>Certificate no.</td><td>'+esc(id)+'</td></tr></table>'})}
 
 route();
 </script><script>
