@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NextStep AI Learning – Assessment Portal</title>
-<meta name="theme-color" content="#070d22"><meta name="robots" content="noindex">
+<script>(function(){var t=null;try{t=localStorage.getItem('nextstep-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';document.documentElement.setAttribute('data-theme',t)})();</script><meta name="theme-color" content="#070d22"><meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2314264f' stroke='%23b8923a' stroke-width='3'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='32' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mrs+Saint+Delafield&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -226,9 +226,77 @@ input:-webkit-autofill:focus{
   .lc{padding:16px 12px}
   #qz .nv button{flex:1 1 100%}
 }
+
+/* ===== v27 portal themes: dark (default look), light, and system (first visit follows the device) ===== */
+html[data-theme="dark"]{color-scheme:dark}
+.tg{min-height:40px;margin:0 0 0 auto;padding:6px 14px;font:650 14px Inter,system-ui,sans-serif;color:#eef1fb;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:12px;cursor:pointer}
+.shi{align-items:center}.shi .bk{margin-left:auto}.shi .bk+.tg{margin-left:0}
+.tg:focus-visible,.bk:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #d4af5a;outline-offset:2px}
+html[data-theme="light"]{color-scheme:light}
+html[data-theme="light"] body{color:#1b2944;background:radial-gradient(900px 520px at 8% -8%,#d7e3f6 0,transparent 60%),radial-gradient(700px 480px at 100% 0,#f1e7cc 0,transparent 55%),#eef2f8}
+html[data-theme="light"] .sh{background:rgba(255,255,255,.82);border-bottom:1px solid rgba(122,87,20,.35);box-shadow:0 6px 22px rgba(33,55,95,.1)}
+html[data-theme="light"] .wm b{color:#14264f}html[data-theme="light"] .wm em{color:#8a6616}html[data-theme="light"] .wm small,html[data-theme="light"] .shi small{color:#7a5714}
+html[data-theme="light"] .bk{color:#7a5714}html[data-theme="light"] .bk:hover{background:rgba(20,38,79,.07)}
+html[data-theme="light"] .tg{color:#14264f;background:rgba(20,38,79,.06);border-color:rgba(20,38,79,.3)}
+html[data-theme="light"] .lc{background:radial-gradient(500px 360px at 80% 10%,rgba(212,175,90,.25) 0,transparent 65%),radial-gradient(520px 400px at 10% 90%,rgba(46,85,201,.1) 0,transparent 65%),#f4f1e6}
+html[data-theme="light"] .lcard,html[data-theme="light"] .card,html[data-theme="light"] .vbox{background:rgba(255,255,255,.92);border:1px solid rgba(20,38,79,.14);box-shadow:0 14px 36px rgba(33,55,95,.12);color:#1b2944}
+html[data-theme="light"] .lcard .lh,html[data-theme="light"] .card .lh,html[data-theme="light"] #ins .lh,html[data-theme="light"] #qz .ql{color:#7a5714}
+html[data-theme="light"] .lcard h1,html[data-theme="light"] .card h1,html[data-theme="light"] #qz .qnum,html[data-theme="light"] .qh,html[data-theme="light"] #qz .qt{color:#14264f}
+html[data-theme="light"] .sub,html[data-theme="light"] .card .sub,html[data-theme="light"] .nt,html[data-theme="light"] label.f,html[data-theme="light"] .card label.f{color:#44506d}
+html[data-theme="light"] .nt{border-top-color:#e5dcc0}
+html[data-theme="light"] .lcard input[type=text],html[data-theme="light"] input[type=text],html[data-theme="light"] .card input[type=text],html[data-theme="light"] select{background:#fff;color:#14264f;border:1px solid #9aa5c0}
+html[data-theme="light"] input::placeholder{color:#5f6b88}
+html[data-theme="light"] input:-webkit-autofill{-webkit-text-fill-color:#14264f;box-shadow:0 0 0 1000px #fff inset}
+html[data-theme="light"] .lcard .er,html[data-theme="light"] .card .er,html[data-theme="light"] .er{color:#b3261e}
+html[data-theme="light"] .lcard .ok,html[data-theme="light"] .card .ok,html[data-theme="light"] .ok{color:#18794e}
+html[data-theme="light"] .rules,html[data-theme="light"] #ins .card{color:#26304f}html[data-theme="light"] .rules b{color:#0b1530}html[data-theme="light"] .rules li::marker{color:#8a6616}
+html[data-theme="light"] .rules .w{color:#8f1d1d;background:rgba(198,40,40,.08);border-color:rgba(198,40,40,.4)}
+html[data-theme="light"] #qz .card{border-top:4px solid #b88935}
+html[data-theme="light"] .tm{background:rgba(20,38,79,.08);color:#14264f;border-color:rgba(20,38,79,.25)}html[data-theme="light"] .tm.low{background:#c62828;color:#fff}
+html[data-theme="light"] .pg{background:rgba(20,38,79,.13)}
+html[data-theme="light"] .dots .dt{background:#fff;color:#33405f;border:1.5px solid #9aa5c0}
+html[data-theme="light"] .dots .dt.dn{background:#f6ebc8;color:#14264f;border-color:#8a6616}
+html[data-theme="light"] .dots .dt.cur{background:#d4af5a;color:#1a1405;border-color:#8a6616;box-shadow:0 0 0 3px rgba(184,137,53,.35)}
+html[data-theme="light"] #qz .op,html[data-theme="light"] .op{background:#fff;border:1.5px solid #b7c0d8;color:#14264f}
+html[data-theme="light"] #qz .op:hover{background:#f3f6ff;border-color:#8a6616}
+html[data-theme="light"] #qz .op:has(input:checked){background:#fbf0d2;border-color:#8a6616;box-shadow:0 0 0 1px #8a6616 inset}
+html[data-theme="light"] #qz .ob{background:#e7ebf6;color:#14264f}html[data-theme="light"] #qz .op:has(input:checked) .ob{background:#d4af5a;color:#1a1405}
+html[data-theme="light"] .nv .s2,html[data-theme="light"] #qz .nv .s2,html[data-theme="light"] button.s,html[data-theme="light"] .card button.s{background:#eef1fa;color:#14264f;border:1px solid #b7c0d8}
+html[data-theme="light"] #vCancel .lh{color:#b3261e}
+html[data-theme="light"] .vbox,html[data-theme="light"] .vbox td,html[data-theme="light"] .t td,html[data-theme="light"] .t th{color:#14264f}html[data-theme="light"] .vbox td:first-child{color:#4b5878}
+html[data-theme="light"] .good{background:#eaf7ee;border-color:#2e7d32}html[data-theme="light"] .bad{background:#fdeeee;border-color:#c62828}html[data-theme="light"] .big{color:#18794e}
+html[data-theme="light"] #view{background:#e9edf7;border-color:rgba(20,38,79,.25)}
+html[data-theme="light"] .sf2{background:rgba(255,255,255,.75);color:#44506d;border-top:1px solid rgba(20,38,79,.14)}html[data-theme="light"] .sf2 a{color:#7a5714}
+html[data-theme="light"] .lp{color:#eef1fb}html[data-theme="light"] .lp .lk{color:#ecd9a0}html[data-theme="light"] .lp .lt,html[data-theme="light"] .lp .lf span{color:#d5dcf2}html[data-theme="light"] .lp .lf b,html[data-theme="light"] .lp h2,html[data-theme="light"] .lp h2 a{color:#fff}
+@media(max-width:520px){.tg{padding:6px 10px}}
+
+/* ===== v27 fixes from audit: dark cards, cancelled label, light login panel, verify heading ===== */
+html[data-theme="dark"] .lcard,html[data-theme="dark"] .card,html[data-theme="dark"] .vbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#eef1fb}
+html[data-theme="dark"] .card h1,html[data-theme="dark"] .card b,html[data-theme="dark"] #vCert .card{color:#fff}
+html[data-theme="dark"] .card .sub,html[data-theme="dark"] .card label.f{color:#b8c1de}
+html[data-theme="dark"] .card .lh,html[data-theme="dark"] .lcard .lh{color:#ecd9a0}
+html[data-theme="dark"] .card .er{color:#ff8f8f}html[data-theme="dark"] .card .ok{color:#6fe0a0}
+html[data-theme="dark"] .card button.s,html[data-theme="dark"] button.s{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
+html[data-theme="dark"] #vCancel .lh{color:#ff9a9a!important}
+html[data-theme="light"] #vCancel .lh{color:#b3261e!important}
+html[data-theme="dark"] #vVerify>h1{color:#fff}html[data-theme="light"] #vVerify>h1{color:#14264f}
+.lp{color:#eef1fb}.lp .lk{color:#ecd9a0}.lp .lf b{color:#fff}.lp .lf span{color:#c9d1ec}.lp .lt{color:#ecd9a0}
+html[data-theme="light"] .lp,html[data-theme="light"] .lp .lf b{color:#fff}html[data-theme="light"] .lp .lf span{color:#c9d1ec}html[data-theme="light"] .lp .lk{color:#ecd9a0}
+html[data-theme="light"] #vCert .card b{color:#14264f}
+
+/* ===== v27 portal contrast fixes (dark cards, cancelled label, light login panel, verify heading) ===== */
+html[data-theme="dark"] .card,html[data-theme="dark"] .vbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#eef1fb}
+html[data-theme="dark"] .card h1,html[data-theme="dark"] #vCert .card b{color:#fff}
+html[data-theme="dark"] .card .sub{color:#c4cdea}html[data-theme="dark"] .card .lh{color:#ecd9a0}
+html[data-theme="dark"] .card .er{color:#ff9a9a}html[data-theme="dark"] .card .ok{color:#6fe0a0}
+html[data-theme="dark"] .card button.s{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
+html[data-theme="dark"] #vCancel .lh{color:#ff9a9a!important}html[data-theme="light"] #vCancel .lh{color:#b3261e!important}
+html[data-theme="dark"] #vVerify>h1{color:#fff}html[data-theme="light"] #vVerify>h1{color:#14264f}
+.lp{color:#eef1fb}.lp .lk{color:#ecd9a0}.lp .lf b{color:#fff}.lp .lf span{color:#c9d2ee}.lp .lt{color:#ecd9a0}
+html[data-theme="light"] .lp{background:radial-gradient(700px 420px at 15% 10%,#223c85 0,transparent 60%),radial-gradient(500px 400px at 90% 100%,rgba(212,175,90,.25) 0,transparent 60%),#0b1530;border-radius:22px;box-shadow:0 14px 36px rgba(33,55,95,.18)}
 </style></head><body><div id="lbar"></div>
 <div id="pre"><svg width="76" height="76" viewBox="0 0 48 48"><circle class="r" cx="24" cy="24" r="22" fill="none" stroke="#d4af5a" stroke-width="1.6"/><path class="a" d="M11 36h8v-8h8v-8h8v-3" fill="none" stroke="#ecd9a0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path class="h" d="M35 8l5.5 8h-11z" fill="#d4af5a"/></svg><p>Next<em>Step</em> AI Learning</p><small>ASSESSMENT PORTAL</small><div class="pb"><i></i></div></div>
-<header class="sh"><div class="shi"><a class="lk2" href="https://nextstepailearning.github.io/" title="Go to NextStep AI Learning website"><span id="lgo"></span><span class="wm"><b>Next<em>Step</em></b><small>AI LEARNING</small></span></a><span id="bn" hidden></span><a class="bk" href="https://nextstepailearning.github.io/">← Main website</a></div></header>
+<header class="sh"><div class="shi"><a class="lk2" href="https://nextstepailearning.github.io/" title="Go to NextStep AI Learning website"><span id="lgo"></span><span class="wm"><b>Next<em>Step</em></b><small>AI LEARNING</small></span></a><span id="bn" hidden></span><a class="bk" href="https://nextstepailearning.github.io/">← Main website</a><button type="button" id="th" class="tg" aria-label="Switch colour theme"></button></div></header>
 <div id="vExam" class="ex" hidden>
  <div id="lg" class="lw">
   <section class="lp"><div class="lpi">
@@ -242,7 +310,7 @@ input:-webkit-autofill:focus{
   <section class="lc"><div class="lcard">
    <div class="lh">PARTICIPANT LOGIN</div><h1>Sign in to your assessment</h1>
    <p class="sub">Enter the mobile number registered with your training coordinator.</p>
-   <label class="f" for="ph">Registered mobile number</label><input type="text" id="ph" inputmode="numeric" autocomplete="tel" placeholder="01XXXXXXXXX">
+   <label class="f" for="ph">Registered mobile number</label><input type="text" id="ph" inputmode="numeric" autocomplete="tel" placeholder="Registered mobile number">
    <button id="go">Continue to Assessment</button><div id="m1" class="msg"></div>
    <div class="nt"><b>Need help?</b> If your number is not recognised, please contact your training coordinator. Each participant may take the assessment once unless a retake is approved.</div>
   </div></section>
@@ -277,7 +345,7 @@ input:-webkit-autofill:focus{
 <div id="vVerify" class="wrap"><h1>Certificate Verification</h1><div id="vb" class="vbox"></div></div>
 <footer class="sf2"><span id="ft">© NextStep AI Learning. All rights reserved.</span> · Certificates can be verified online using the QR code. · <a href="https://nextstepailearning.github.io/privacy.html" style="color:inherit">Privacy</a> · <a href="https://nextstepailearning.github.io/terms.html" style="color:inherit">Terms</a></footer>
 <script>
-var ADMIN='https://nextstepailearning.github.io/NextStepAdmin/';
+var ADMIN='https://nextstepailearning.github.io/Admin/';
 var HOME='https://nextstepailearning.github.io/';
 var SITE='https://nextstepailearning.github.io/NextStepExam/';
 var API='https://script.google.com/macros/s/AKfycbyZGvLqByBlYr9I629_FC08W9sp_JSXhERwIPLr1Ddc7kDVAmwfJnWXdxrgzLsXpuHO/exec';
@@ -404,4 +472,10 @@ route();
 (function(){var p=document.getElementById('pre'),t0=Date.now(),d=false;function go(){if(d||!p)return;d=true;setTimeout(function(){p.classList.add('done');setTimeout(function(){p.remove()},700)},Math.max(0,1200-(Date.now()-t0)))}
 if(document.readyState==='complete')go();else addEventListener('load',go);setTimeout(go,3500);
 document.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;var r=b.getBoundingClientRect(),s=Math.max(r.width,r.height)*2,o=document.createElement('span');o.className='rp';o.style.cssText='width:'+s+'px;height:'+s+'px;left:'+(e.clientX-r.left-s/2)+'px;top:'+(e.clientY-r.top-s/2)+'px';b.appendChild(o);setTimeout(function(){o.remove()},650)})})();
+
+(function(){var r=document.documentElement,b=document.getElementById('th');if(!b)return;
+function ap(v,rem){r.setAttribute('data-theme',v);var l=v==='light';b.textContent=l?'☾ Dark':'☀ Light';b.setAttribute('aria-label',l?'Switch to dark mode':'Switch to light mode');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=l?'#eef2f8':'#070d22';if(rem){try{localStorage.setItem('nextstep-theme',v)}catch(e){}}}
+ap(r.getAttribute('data-theme')==='light'?'light':'dark',false);
+b.onclick=function(){ap(r.getAttribute('data-theme')==='light'?'dark':'light',true)};
+var mq=window.matchMedia&&matchMedia('(prefers-color-scheme: light)');if(mq&&mq.addEventListener)mq.addEventListener('change',function(e){var t=null;try{t=localStorage.getItem('nextstep-theme')}catch(x){}if(t!=='light'&&t!=='dark')ap(e.matches?'light':'dark',false)})})();
 </script></body></html>
