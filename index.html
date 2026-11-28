@@ -55,7 +55,7 @@ table.t{width:100%;border-collapse:collapse;font-size:13px;display:block;overflo
 .ph{position:absolute;left:68px;top:58px;width:94px;height:118px;border:3px solid #b8923a;padding:3px;background:#fff}.ph img{width:100%;height:100%;display:block}
 .cno{position:absolute;right:68px;top:62px;text-align:right}.cno small{display:block;font:600 9px Cinzel,serif;letter-spacing:3px;color:#a67c1f}.cno b{font:700 18px Cinzel,serif;letter-spacing:2px}
 .col{position:absolute;left:60px;right:60px;top:42px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.on{font:600 24px Cinzel,serif;letter-spacing:6px;margin-top:6px}.tg{font:italic 500 16px 'Cormorant Garamond',serif;color:#8d6a1c;margin-top:2px}
+#hd{display:flex;flex-direction:column;align-items:center}#hd img{margin:0 auto}.on{font:600 24px Cinzel,serif;letter-spacing:6px;margin-top:6px}.tg{font:italic 500 16px 'Cormorant Garamond',serif;color:#8d6a1c;margin-top:2px}
 .t1{font:700 54px 'Playfair Display',serif;letter-spacing:10px;padding-left:10px;line-height:1;margin-top:12px}
 .t2{font:600 16px Cinzel,serif;letter-spacing:8px;padding-left:8px;color:#a67c1f;margin-top:10px}
 .dv{width:340px;display:flex;align-items:center;gap:10px;color:#b8923a;margin-top:8px}.dv u{flex:1;height:1px;background:#b8923a}
@@ -149,8 +149,7 @@ body{font-family:Inter,'Plus Jakarta Sans',system-ui,sans-serif;font-size:17px;l
 .sub,.nt{color:#b8c1de;font-size:15.5px}.nt{border-top-color:rgba(255,255,255,.12)}
 h1{font:800 26px Sora,sans-serif;color:#fff}label.f{color:#b8c1de;font-size:15px}
 input[type=text],select,.lcard input[type=text]{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:14px;font-size:17px;padding:14px 16px;min-height:52px}
-.lcard input[type=text]:focus,input[type=text]:focus,select:focus{outline:2px solid #d4af5a;outline-offset:1px}select option{color:#111}
-button{position:relative;overflow:hidden;font:700 16.5px Inter,sans-serif;border-radius:14px;padding:14px 24px;min-height:50px;background:linear-gradient(135deg,#1d3a82,#13275c);border:1px solid rgba(255,255,255,.2);color:#fff;transition:transform .12s,filter .2s,box-shadow .2s}
+.lcard input[type=text]:focus,input[type=text]:focus,select:focus{outline:2px solid #d4af5a;outline-offset:1px}button{position:relative;overflow:hidden;font:700 16.5px Inter,sans-serif;border-radius:14px;padding:14px 24px;min-height:50px;background:linear-gradient(135deg,#1d3a82,#13275c);border:1px solid rgba(255,255,255,.2);color:#fff;transition:transform .12s,filter .2s,box-shadow .2s}
 button:hover{filter:brightness(1.15)}button:active{transform:scale(.97)}
 #go,button.pri{background:linear-gradient(135deg,#ecd9a0,#d4af5a 55%,#a8832c);color:#1a1405;border:0;box-shadow:0 8px 24px rgba(212,175,90,.3)}
 button.s{background:rgba(255,255,255,.1);color:#fff;font-size:14px;min-height:38px;padding:7px 12px}
@@ -298,6 +297,9 @@ html[data-theme="dark"] #vVerify>h1{color:#fff}html[data-theme="light"] #vVerify
 html[data-theme="light"] .lp{background:radial-gradient(700px 420px at 15% 10%,#223c85 0,transparent 60%),radial-gradient(500px 400px at 90% 100%,rgba(212,175,90,.25) 0,transparent 60%),#0b1530;border-radius:22px;box-shadow:0 14px 36px rgba(33,55,95,.18)}
 
 #cfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:998;display:none}#cfx.on{display:block}
+/* v46: drop-down lists readable in dark AND light (option text colour was fixed to near-black on a dark list) */
+select option,select optgroup{background:#16224d;color:#f2f5ff}
+html[data-theme="light"] select option,html[data-theme="light"] select optgroup{background:#ffffff;color:#14264f}
 </style></head><body><div id="lbar"></div><canvas id="cfx" aria-hidden="true"></canvas>
 <div id="pre"><svg width="76" height="76" viewBox="0 0 48 48"><circle class="r" cx="24" cy="24" r="22" fill="none" stroke="#d4af5a" stroke-width="1.6"/><path class="a" d="M11 36h8v-8h8v-8h8v-3" fill="none" stroke="#ecd9a0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path class="h" d="M35 8l5.5 8h-11z" fill="#d4af5a"/></svg><p>Next<em>Step</em> AI Learning</p><small>ASSESSMENT PORTAL</small><div class="pb"><i></i></div></div>
 <header class="sh"><div class="shi"><a class="lk2" href="https://nextstepailearning.github.io/" title="Go to NextStep AI Learning website"><span id="lgo"></span><span class="wm"><b>Next<em>Step</em></b><small>AI LEARNING</small></span></a><span id="bn" hidden></span><a class="bk" href="https://nextstepailearning.github.io/">← Main website</a><button type="button" id="th" class="tg" aria-label="Switch colour theme"></button></div></header>
@@ -397,7 +399,8 @@ function fit(){var w=$('view').clientWidth,s=Math.min(1,w/1123);$('stage').style
 function rs(f,w,h,cover,type,cb,q){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var s=cover?Math.max(w/i.width,h/i.height):Math.min(w/i.width,h/i.height,1),dw=i.width*s,dh=i.height*s,W=cover?w:Math.round(dw),H=cover?h:Math.round(dh),c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');if(type=='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,W,H)}x.drawImage(i,(W-dw)/2,(H-dh)/2,dw,dh);cb(c.toDataURL(type,q||.8))};i.src=r.result};r.readAsDataURL(f)}
 var BN=0;var LB=null;document.addEventListener('pointerdown',function(e){LB=e.target.closest&&e.target.closest('button')});
 function bz(on){var b=$('lbar');if(!b)return;if(on){if(LB&&!BN)LB.classList.add('ld');BN++;b.className='';void b.offsetWidth;b.className='on'}else if(--BN<=0){BN=0;b.className='fin';[].forEach.call(document.querySelectorAll('button.ld'),function(x){x.classList.remove('ld')})}}
-function call(o,ka){bz(1);return fetch(API,{method:'POST',keepalive:!!ka,body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}}).then(function(x){bz(0);return x})}
+function meta(){try{return{ua:navigator.userAgent||'',scr:screen.width+'x'+screen.height,lang:navigator.language||'',tz:(Intl.DateTimeFormat().resolvedOptions().timeZone)||'',ref:document.referrer||''}}catch(e){return{}}}
+function call(o,ka){if(/^(login|start|submit|cancel)$/.test(o.op))o.meta=meta();bz(1);return fetch(API,{method:'POST',keepalive:!!ka,body:JSON.stringify(o)}).then(function(r){return r.json()}).catch(function(){return{error:'Connection problem. Check your internet and the API link.'}}).then(function(x){bz(0);return x})}
 function show(id){['vExam','vCert','vVerify','vCancel'].forEach(function(x){$(x).hidden=x!=id})}
 function msg(id,t,ok){$(id).textContent=t||'';$(id).className='msg '+(ok?'ok':'er')}
 function route(){var h=location.hash;if(h.indexOf('#/verify/')==0){show('vVerify');doVerify(decodeURIComponent(h.slice(9)))}else if(h=='#/admin'){location.replace(ADMIN);return}else show('vExam')}
