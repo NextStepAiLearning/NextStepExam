@@ -296,7 +296,9 @@ html[data-theme="dark"] #vCancel .lh{color:#ff9a9a!important}html[data-theme="li
 html[data-theme="dark"] #vVerify>h1{color:#fff}html[data-theme="light"] #vVerify>h1{color:#14264f}
 .lp{color:#eef1fb}.lp .lk{color:#ecd9a0}.lp .lf b{color:#fff}.lp .lf span{color:#c9d2ee}.lp .lt{color:#ecd9a0}
 html[data-theme="light"] .lp{background:radial-gradient(700px 420px at 15% 10%,#223c85 0,transparent 60%),radial-gradient(500px 400px at 90% 100%,rgba(212,175,90,.25) 0,transparent 60%),#0b1530;border-radius:22px;box-shadow:0 14px 36px rgba(33,55,95,.18)}
-</style></head><body><div id="lbar"></div>
+
+#cfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:998;display:none}#cfx.on{display:block}
+</style></head><body><div id="lbar"></div><canvas id="cfx" aria-hidden="true"></canvas>
 <div id="pre"><svg width="76" height="76" viewBox="0 0 48 48"><circle class="r" cx="24" cy="24" r="22" fill="none" stroke="#d4af5a" stroke-width="1.6"/><path class="a" d="M11 36h8v-8h8v-8h8v-3" fill="none" stroke="#ecd9a0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path class="h" d="M35 8l5.5 8h-11z" fill="#d4af5a"/></svg><p>Next<em>Step</em> AI Learning</p><small>ASSESSMENT PORTAL</small><div class="pb"><i></i></div></div>
 <header class="sh"><div class="shi"><a class="lk2" href="https://nextstepailearning.github.io/" title="Go to NextStep AI Learning website"><span id="lgo"></span><span class="wm"><b>Next<em>Step</em></b><small>AI LEARNING</small></span></a><span id="bn" hidden></span><a class="bk" href="https://nextstepailearning.github.io/">← Main website</a><button type="button" id="th" class="tg" aria-label="Switch colour theme"></button></div></header>
 <div id="vExam" class="ex" hidden>
@@ -318,7 +320,7 @@ html[data-theme="light"] .lp{background:radial-gradient(700px 420px at 15% 10%,#
    <div class="nt"><b>Need help?</b> If your number is not recognised, please contact your training coordinator. Each participant may take the assessment once unless a retake is approved.</div>
   </div></section>
  </div>
- <div id="ins" class="wrap" hidden><div class="card"><div class="lh">INSTRUCTIONS</div><h1>Welcome, <span id="who"></span></h1>
+ <div id="ins" class="wrap" hidden><div class="card"><div class="lh">INSTRUCTIONS</div><h1><span id="gt">Welcome</span>, <span id="who"></span></h1>
   <ul class="rules" id="rules"></ul><button id="st">Start Assessment</button><div id="m2" class="msg"></div></div></div>
  <div id="gr" class="gr" hidden><div><small>GET READY</small><b id="grn">3</b><span>Assessment is starting…</span></div></div>
  <div id="qz" class="wrap ns" hidden><div class="card"><div class="qh"><div><div class="ql">QUESTION</div><div id="qn" class="qnum"></div></div><div id="tm" class="tm" hidden></div></div>
@@ -330,7 +332,7 @@ html[data-theme="light"] .lp{background:radial-gradient(700px 420px at 15% 10%,#
  <button id="vc" class="s" style="padding:12px 16px" hidden>View my previous certificate</button>
  <button id="rq2">Request another attempt</button><div id="m5" class="msg"></div></div></div>
 <div id="vCert" class="wrap wide" hidden><div class="card"><b>🎉 Your score: <span id="sc"></span></b><br>
- <button id="dl">⬇ Download Certificate (PDF)</button> <button id="rq" class="s" style="padding:12px 16px;margin-top:12px">🔁 Request another attempt</button><div id="m3" class="msg"></div></div>
+ <button id="dl">⬇ Download Certificate (PDF)</button> <button id="lnBtn" class="s" type="button" style="padding:12px 16px;margin-top:12px">in Add to LinkedIn</button> <button id="lnCopy" class="s" type="button" style="padding:12px 16px;margin-top:12px">🔗 Copy verify link</button> <button id="rq" class="s" style="padding:12px 16px;margin-top:12px">🔁 Request another attempt</button><div id="m3" class="msg"></div></div>
  <div id="view"><div id="stage">
 <div id="cert">
  <img id="gl" alt="" width="1123" height="794" style="position:absolute;left:0;top:0;display:block">
@@ -453,7 +455,16 @@ function showCancel(r){LC=r;show('vCancel');$('vc').hidden=!r.cert;$('rq2').hidd
 $('vc').onclick=function(){if(LC&&LC.cert)showCert(LC.cert,LC.requested)};
 $('rq2').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m5',r.error);$('rq2').hidden=true;msg('m5',RQ,true)})};
 var RQ='Request sent. You can retake the exam once the admin allows it.';
-function showCert(c,req){D=c;show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(SITE+'#/verify/'+c.certId);
+
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function(){var h=new Date().getHours(),g=h>=5&&h<12?'Good morning':h>=12&&h<17?'Good afternoon':h>=17&&h<21?'Good evening':'Welcome',e=document.getElementById('gt');if(e)e.textContent=g})();
+function confetti(){if(RM)return;var c=document.getElementById('cfx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;c.className='on';var P=[],cols=['#d4af5a','#ecd9a0','#b88935','#fff3c4'];for(var i=0;i<90;i++)P.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.4,w:5+Math.random()*5,h:8+Math.random()*7,vx:-1+Math.random()*2,vy:2+Math.random()*3,r:Math.random()*6,vr:-.2+Math.random()*.4,c:cols[i%4]});var t0=performance.now();(function f(t){x.clearRect(0,0,c.width,c.height);var a=Math.max(0,1-(t-t0)/2800);P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.globalAlpha=a;x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.w/2,-p.h/2,p.w,p.h);x.restore()});if(a>0)requestAnimationFrame(f);else{x.clearRect(0,0,c.width,c.height);c.className=''}})(t0)}
+function celebrate(c,req){var m=String(c.score).match(/^(\d+)\s*\/\s*(\d+)$/);if(!m||RM)return;var to=+m[1],tot=m[2],el=document.getElementById('sc'),t0=null;(function f(t){if(t0===null)t0=t;var p=Math.min(1,(t-t0)/900);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+'/'+tot;if(p<1)requestAnimationFrame(f);else el.textContent=c.score})(performance.now());if(!req)setTimeout(confetti,350)}
+var PUB='https://nextstepailearning.github.io/verify/?id=';
+var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function liUrl(c){var y=(String(c.date).match(/(20\d\d)/)||[])[1],m=0;MN.forEach(function(n,i){if(String(c.date).indexOf(n)>-1)m=i+1});
+ return 'https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name='+encodeURIComponent(c.title)+'&organizationName='+encodeURIComponent(c.org||'NextStep AI Learning')+(y?'&issueYear='+y:'')+(m?'&issueMonth='+m:'')+'&certUrl='+encodeURIComponent(PUB+c.certId)+'&certId='+encodeURIComponent(c.certId)}
+function showCert(c,req){D=c;celebrate(c,req);$('lnBtn').onclick=function(){window.open(liUrl(c),'_blank','noopener')};$('lnCopy').onclick=function(){var t=PUB+c.certId,b=$('lnCopy');function ok(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o},1400)}function fb(){var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(a)}if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(ok,fb);else fb()};show('vCert');$('sc').textContent=c.score;$('rq').hidden=!!req;msg('m3',req?RQ:'',true);render();fit();mkqr(SITE+'#/verify/'+c.certId);
  if(document.fonts)document.fonts.ready.then(function(){render();fit()})}
 $('rq').onclick=function(){call({op:'request',phone:creds.phone}).then(function(r){if(r.error)return msg('m3',r.error);$('rq').hidden=true;msg('m3',RQ,true)})};
 $('dl').onclick=async function(){var b=this,st=$('stage'),old=st.style.transform;b.disabled=true;b.textContent='Preparing…';
